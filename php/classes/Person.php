@@ -1,7 +1,7 @@
 <?php
 
 include 'interface.php';
-abstract class Person implements ISavable{
+abstract class Person{
     protected $id;
     protected $name;
     protected $phone;
@@ -15,6 +15,10 @@ abstract class Person implements ISavable{
         $this->email = $email;
     }
     
+    public function save() {}
+	public function edit() {}
+	public function delete() {}
+        
 //    public function uploadPic($imageRawData) {
 //		$uploadfile = 'uploads/' . basename($_FILES['ad_image']['name']);
 //		move_uploaded_file($_FILES['ad_image']['tmp_name'], $uploadfile);

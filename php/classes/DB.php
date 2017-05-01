@@ -1,26 +1,13 @@
 <?php
 
 class DB {
-    private $conn;
-    private static $instance;
-
-    private function __construct() {
-        $this->conn = new mysqli('localhost', 'root', '', 'school');
-        if ($this->conn->errno) {
-            echo $this->conn->error;
-            die();
-        }
-    }
-
-    public static function getInstance() {
-        if (empty(self::$instance)) {
-            return self::$instance = new self();
-        } else {
-            return self::$instance;
-        }
-    }
-
-    public function getConnection() {
-        return $this->conn;
-    }
+	
+	public static $conn;
+	public static function connect() {
+		if (!self::$conn) {
+			self::$conn = new mysqli('localhost', 'root', '', 'school');
+		}
+		return self::$conn;
+	}
+//	private function __construct() {}
 }

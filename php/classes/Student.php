@@ -1,6 +1,6 @@
 <?php
 
-class Student implements ISavable {
+class Student extends Person implements CRUD {
 	private static $tableName = 'students';
 	private static $picturePrefix = 'img/student_img';
 

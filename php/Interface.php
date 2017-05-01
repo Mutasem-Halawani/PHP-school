@@ -1,6 +1,6 @@
 <?php 
 
-interface ISavable {
+interface CRUD {
 	function save();
 	function edit();
 	function delete();
