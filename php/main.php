@@ -37,7 +37,7 @@ for ($i=0,$count=count($rows);$i<$count;$i++){
          <header>
              <div class="left-menu-items">
                 <img id="logo" width="50"src="https://userscontent2.emaze.com/images/5d77f24d-41bd-463a-8fdd-a6f9351e5df5/bbaa6e381bd537550e14ef781525cc5e.gif">
-                <a class="left-menu-links" href="" >School</a>
+                <a class="left-menu-links" href="../html/owner.html" >School</a>
                 <a class="left-menu-links" href="" >Administration</a>
             </div>
             <div class="logged-in-user-info">

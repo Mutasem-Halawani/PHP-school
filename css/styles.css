@@ -1,13 +1,13 @@
 body{
-   width:1200px;
+   max-width:80%;
    margin: 0 auto;
    background-color: lightgray;
 }
 
 header{
     display:flex;
-     flex-direction: row;
-          justify-content: space-between;
+    flex-direction: row;
+    justify-content: space-between;
 }
 div.left-menu-items{
     display:inline;
@@ -26,3 +26,48 @@ img#logo, img#logged-in-user-img{
     vertical-align: middle;
 }
 
+div.courses-list , div.students-list{
+    width:20%;
+    padding:1em;
+}
+
+main{
+    display:flex;
+    flex-direction: row;
+    /*justify-content: space-between;*/
+}
+
+div.main-container{
+    width:40%;
+    height:50vh;
+    border: 2px solid brown;
+    margin:2rem;
+}
+
+h3.list-header{
+    display:inline;
+}
+
+button.add-btn{
+    border:none;
+    padding:0.5rem 3rem;
+    margin-left:1rem;
+    border-radius: 2px;
+}
+
+button.add-btn:hover{
+    background-color: blue;
+    cursor:pointer;
+}
+
+button.add-btn:active{
+    background-color: lightblue;
+}
+
+ul{
+    list-style:none;
+}
+
+li.list-item{
+   
+}
