@@ -1,7 +1,7 @@
 <?php
 
 include 'interface.php';
-abstract class Person{
+abstract class Person implements CRUD{
     protected $id;
     protected $name;
     protected $phone;
@@ -14,11 +14,11 @@ abstract class Person{
         $this->phone = $phone;
         $this->email = $email;
     }
-    
-    public function save() {}
-	public function edit() {}
-	public function delete() {}
-        
+//    
+//    public function save() {}
+//	public function edit() {}
+//	public function delete() {}
+//        
 //    public function uploadPic($imageRawData) {
 //		$uploadfile = 'uploads/' . basename($_FILES['ad_image']['name']);
 //		move_uploaded_file($_FILES['ad_image']['tmp_name'], $uploadfile);

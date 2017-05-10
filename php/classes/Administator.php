@@ -1,13 +1,16 @@
 <?php
 
-class Administrator extends Person implements CRUD {
+include 'DB.php';
+include 'Person.php';
+
+class Administrator extends Person{
 	private static $tableName = 'administrators';
 	private static $picturePrefix = 'img/student_img';
 
-	function __construct($id, $name, $picture) {
+	function __construct($id, $name, $image) {
 		$this->id = $id;
 		$this->name = $name;
-		$this->picture = $picture;
+		$this->image = $image;
 	}
 
 	public function save() {}

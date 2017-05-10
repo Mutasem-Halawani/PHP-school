@@ -1,6 +1,7 @@
 <?php
 
-include DB.php;
+include 'DB.php';
+include 'Person.php';
 
 class Course implements CRUD{
            public $name;

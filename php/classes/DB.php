@@ -9,5 +9,4 @@ class DB {
 		}
 		return self::$conn;
 	}
-//	private function __construct() {}
 }
