@@ -9,11 +9,11 @@ $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
 
 function check_login($username,$password){
     
-}
 if (check_login($username, $password))
     header("Location: main.php");
 else // uname or pwd error
     header("Location: ../index.php");
+}
 
 //
 //$username = $mysqli->escape_string($_POST['username']);
