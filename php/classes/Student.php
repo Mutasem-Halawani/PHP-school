@@ -29,6 +29,9 @@ class Student extends Person {
 	public function delete() {
             $conn = DB::get_instance()->get_connection();
         if ($conn->errno) {echo $conn->error; die();}
+        
+        
+        
         }
 
 //	private static function selectAll() {
