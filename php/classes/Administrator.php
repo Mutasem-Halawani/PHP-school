@@ -23,43 +23,70 @@ class Administrator extends Person{
            $conn = DB::get_instance()->get_connection();
         if ($conn->errno) {echo $conn->error; die();}
         
+        $stmt = $connection->prepare("INSERT INTO administrators (name, phone,"
+                . " email, image, password, role_id) VALUES (?, ?, ?, ?, ?, ?)");
+		$stmt->bind_param('ssssis', $this->name, $this->phone,
+                        $this->email, $this->image, $this->password,$this->role_id);
+		$stmt->execute();
+		
+		if($stmt->error){
+			echo $stmt->error;
+		} else {
+			echo "Insert new Admin: ". $this->name ." success";
+		}
         
         }
-        
-        public function print_all(){
-                 $conn = DB::get_instance()->get_connection();
-        if ($conn->errno) {echo $conn->error; die();}
-    }
-    
-        $result = $conn->query("SELECT * FROM administrators");
-        $rows = [];
-        
-        while($row = $result->fetch_assoc()){
-            $rows[] = $row;
-        }
-        print_r($rows);
-        }
-	public function edit() {
-                 $conn = DB::get_instance()->get_connection();
-        if ($conn->errno) {echo $conn->error; die();}
-    }
-        }
-	public function delete() {
+        public function print_all(){}
+//        public function print_all(){
+//                 $conn = DB::get_instance()->get_connection();
+//        if ($conn->errno) {echo $conn->error; die();}
+//    }
+//    
+//        $result = $conn->query("SELECT * FROM administrators");
+//        $rows = [];
+//        
+//        while($row = $result->fetch_assoc()){
+//            $rows[] = $row;
+//        }
+//        print_r($rows);
+//        }
+//	public function edit() {
+//                 $conn = DB::get_instance()->get_connection();
+//        if ($conn->errno) {echo $conn->error; die();}
+//    }
+//        }
+
+        public function delete() {
             $conn = DB::connect();
     if ($conn->errno) {
         echo $conn->error;
         die();
     }
-        }
+        $result = $connection->query("DELETE FROM admins WHERE id = '$id'");
+		if($result) {
+			echo "delete admin success";
+		} else {
+			echo "delete admin failed";
+		}
+    }
+        
 
 	private static function selectAll() {
-		echo ucfirst(self::$tableName);
-		$result = DB::getConnection()->query("SELECT * FROM " . self::$tableName . " limit 1000");
-		$rows = [];
-		while ($row = $result->fetch_assoc()) {
-			$rows []= new self($row['id'], $row['name'], $row['picture']);
-		}
-		return $rows;
+            
+            
+		$result = $connection->query("SELECT admins.id as id, admins."
+                        . " as name, admins.phone as phone, admins.email as email,"
+                        . " admins.image as image, roles.name as role FROM admins"
+                        . " INNER JOIN roles on roles.id = admins.role_id");
+		$row = array();
+		if ($result->num_rows > 0) {
+			while ($r = $result->fetch_assoc()) {
+				$rows[] = $r;
+			}
+			echo json_encode($rows);
+			} else {
+				echo "0 results";
+			}
 	}
 
 	public static function printList() {
@@ -73,6 +100,22 @@ class Administrator extends Person{
 			$html .= '</a>';
 		}
 		return $html;
+	}
+        
+        public function edit() {}
+        
+        public function count() {
+		$connection = DB::getconn();
+		if ($connection->errno) {echo $connection->error;die();}
+		
+		$result = $connection->query("SELECT * FROM admins");
+	
+		if ($result->num_rows > 0) {
+			$count = $result->num_rows;
+			echo json_encode($count);
+		} else {
+			echo "0";
+		}	
 	}
 }
 
