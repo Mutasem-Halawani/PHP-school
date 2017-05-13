@@ -31,7 +31,6 @@ class Student extends Person {
         if ($conn->errno) {echo $conn->error; die();}
         
         
-        
         }
 
 //	private static function selectAll() {
