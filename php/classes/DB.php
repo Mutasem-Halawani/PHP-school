@@ -24,5 +24,6 @@
     
     public function get_connection(){
         return $this->conn;
-    }
+    } 
+    
     }
