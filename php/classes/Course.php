@@ -15,7 +15,16 @@ class Course implements CRUD{
         
 }
 
-    public function save() {}
-	public function edit() {}
-	public function delete() {}
+    public function save() {
+//        $conn = DB::get_instance()->get_connection();
+        if ($conn->errno) {echo $conn->error; die();}
+    }
+	public function edit() {
+            $conn = DB::get_instance()->get_connection();
+        if ($conn->errno) {echo $conn->error; die();}
+        }
+	public function delete() {
+            $conn = DB::get_instance()->get_connection();
+        if ($conn->errno) {echo $conn->error; die();}
+        }
 }

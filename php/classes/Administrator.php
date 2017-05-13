@@ -20,18 +20,15 @@ class Administrator extends Person{
             }
 
 	public function save() {
-            $conn = DB::connect();
-    if ($conn->errno) {
-        echo $conn->error;
-        die();
-    }
+           $conn = DB::get_instance()->get_connection();
+        if ($conn->errno) {echo $conn->error; die();}
+        
+        
         }
         
         public function print_all(){
-             $conn = DB::connect();
-    if ($conn->errno) {
-        echo $conn->error;
-        die();
+                 $conn = DB::get_instance()->get_connection();
+        if ($conn->errno) {echo $conn->error; die();}
     }
     
         $result = $conn->query("SELECT * FROM administrators");
@@ -43,10 +40,8 @@ class Administrator extends Person{
         print_r($rows);
         }
 	public function edit() {
-            $conn = DB::connect();
-    if ($conn->errno) {
-        echo $conn->error;
-        die();
+                 $conn = DB::get_instance()->get_connection();
+        if ($conn->errno) {echo $conn->error; die();}
     }
         }
 	public function delete() {
