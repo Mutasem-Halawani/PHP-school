@@ -13,7 +13,8 @@ session_start();
         <link rel="stylesheet" type="text/css" href="css/styles.css">
     </head>
     <body>
-        <?php include 'php/header.php'; ?>
+        
+        <img id="logo" width="50px"src="https://userscontent2.emaze.com/images/5d77f24d-41bd-463a-8fdd-a6f9351e5df5/bbaa6e381bd537550e14ef781525cc5e.gif"/>
         <hr>
         <form action="php/login.php" method="post">
             <label for="username">Username

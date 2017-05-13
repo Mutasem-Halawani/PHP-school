@@ -10,7 +10,6 @@ include_once 'classes/DB.php';
 //include 'classes/Student.php';
 
 
-
     function check_login($username,$password){
 
    $conn = DB::get_instance()->get_connection();
@@ -52,6 +51,5 @@ include_once 'classes/DB.php';
     echo "Wrong Username or Password";
     return false;
 }
-
 
    }
