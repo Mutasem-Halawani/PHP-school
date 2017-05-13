@@ -2,43 +2,56 @@
 
 session_start();
 
-include 'classes/DB.php';
-include 'classes/Person.php';
-include 'classes/Administator.php';
-include 'classes/Course.php';
-include 'classes/Student.php';
+include_once 'classes/DB.php';
+//include 'login.php';
+//include 'classes/Person.php';
+//include 'classes/Administator.php';
+//include 'classes/Course.php';
+//include 'classes/Student.php';
 
-function check_login($username, $password){
-    $conn = DB::connect();
-    if ($conn->errno) {
-        echo $conn->error;
-        die();
-    }
 
-    $stmt = $conn->prepare("SELECT admins.role_id as role_id, admins.image as image, admins.name as name, admins.password as password, roles.name as role FROM admins INNER JOIN roles on roles.id = admins.role_id WHERE email = ?");
-    $stmt->bind_param('s',$uname);
+
+    function check_login($username,$password){
+
+   $conn = DB::get_instance()->get_connection();
+        if ($conn->errno) {echo $conn->error; die();}
+
+//        $result = DB::get_instance()->get_connection()->query("SELECT * FROM administrators");
+//        var_dump($result);
+       
+//        $rows = [];
+//		while ($row = $result->fetch_assoc()) {
+//			$rows []= $row;
+//		}
+        
+    $stmt = $conn->prepare("SELECT email, password FROM administrators WHERE email=?");
+    $stmt->bind_param('s',$username);
 
     $stmt->execute();
     $stmt->store_result();
-    $stmt->bind_result($role_id, $image, $name, $ret_pwd, $role);
-
-    if($stmt->num_rows()) {
-        while ($stmt->fetch())
-        {
-            if (password_verify($pwd, $ret_pwd)) {
-                $_SESSION['name'] = $name;
-                $_SESSION['image'] = $image;
-                $_SESSION['role_id'] = $role_id;
-                $_SESSION['role'] = $role;
-                $session_data = [$name, $image, $role_id, $role];
-                echo json_encode($session_data);
-                return true;
-            }
-        }
+    $stmt->bind_result($email,$returned_password);
+//    $stmt->bind_result($id,$name, $phone, $email, $image, $returned_password, $role_id);
+//    
+//    echo $email . $returned_password;
+    
+    
+   if($stmt->num_rows()) {
+       while ($stmt->fetch())
+       {
+           if (password_verify($password, $returned_password)) {
+               $_SESSION['name'] = $username;
+               $_SESSION['password'] = $password;
+               $session_data = [$username, $password];
+               echo json_encode($session_data);
+               return true;
+           }
+       }
 
     }
-
+    else{
     echo "Wrong Username or Password";
     return false;
 }
 
+
+   }
