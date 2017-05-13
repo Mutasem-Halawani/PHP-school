@@ -13,9 +13,31 @@ class Student extends Person {
 		$this->picture = $picture;
 	}
 
-	public function save() {}
-	public function edit() {}
-	public function delete() {}
+	public function save() {
+            $conn = DB::connect();
+    if ($conn->errno) {
+        echo $conn->error;
+        die();
+    }
+        }
+        
+        public function print_all(){
+            
+        }
+	public function edit() {
+            $conn = DB::connect();
+    if ($conn->errno) {
+        echo $conn->error;
+        die();
+    }
+        }
+	public function delete() {
+            $conn = DB::connect();
+    if ($conn->errno) {
+        echo $conn->error;
+        die();
+    }
+        }
 
 //	private static function selectAll() {
 //		echo ucfirst(self::$tableName);

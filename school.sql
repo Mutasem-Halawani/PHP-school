@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 01, 2017 at 11:40 PM
+-- Generation Time: May 13, 2017 at 10:47 AM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.1.1
 
@@ -29,19 +29,19 @@ SET time_zone = "+00:00";
 CREATE TABLE `administrators` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) DEFAULT NULL,
-  `role` varchar(255) DEFAULT NULL,
   `phone` varchar(25) DEFAULT NULL,
   `email` varchar(120) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
   `password` varchar(120) DEFAULT NULL,
-  `active` tinyint(1) DEFAULT NULL
+  `role_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `administrators`
 --
 
-INSERT INTO `administrators` (`id`, `name`, `role`, `phone`, `email`, `password`, `active`) VALUES
-(1, 'mutasem', 'owner', '054000000', 'mutasem@gmail.com', 'mutasem', NULL);
+INSERT INTO `administrators` (`id`, `name`, `phone`, `email`, `image`, `password`, `role_id`) VALUES
+(1, 'mutasem', '054000000', 'mutasem@gmail.com', NULL, '$2y$10$3VAt1MyAu8wWZRMqclfcSuwWgYcEG18xFzmefhS2lASoQZwzcI1X.', 1);
 
 -- --------------------------------------------------------
 
@@ -97,15 +97,16 @@ CREATE TABLE `students` (
   `name` varchar(255) NOT NULL,
   `phone` int(11) NOT NULL,
   `email` varchar(60) DEFAULT NULL,
-  `img` varchar(255) DEFAULT NULL
+  `image` varchar(255) DEFAULT NULL,
+  `course_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `students`
 --
 
-INSERT INTO `students` (`id`, `name`, `phone`, `email`, `img`) VALUES
-(1, 'moti', 5412312, 'moti@gmail.com', 'moti.jpg');
+INSERT INTO `students` (`id`, `name`, `phone`, `email`, `image`, `course_id`) VALUES
+(1, 'moti', 5412312, 'moti@gmail.com', 'moti.jpg', 1);
 
 --
 -- Indexes for dumped tables
@@ -115,7 +116,8 @@ INSERT INTO `students` (`id`, `name`, `phone`, `email`, `img`) VALUES
 -- Indexes for table `administrators`
 --
 ALTER TABLE `administrators`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `role_id` (`role_id`);
 
 --
 -- Indexes for table `courses`
@@ -127,13 +129,15 @@ ALTER TABLE `courses`
 -- Indexes for table `roles`
 --
 ALTER TABLE `roles`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `role_id_idx` (`id`);
 
 --
 -- Indexes for table `students`
 --
 ALTER TABLE `students`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `course_id` (`course_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
