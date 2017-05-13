@@ -4,23 +4,48 @@ include 'DB.php';
 include 'Person.php';
 
 class Student extends Person {
-	private static $tableName = 'students';
-	private static $picturePrefix = 'img/student_img';
+	public $image;
+        public $course_id;
 
-	function __construct($id, $name, $picture) {
-		$this->id = $id;
-		$this->name = $name;
-		$this->picture = $picture;
+	function __construct($id, $name, $phone, $email, $image,$course_id) {
+            parent::__construct($id, $name, $phone, $email);
+		$this->image = $image;
+		$this->course_id = $course_id;
 	}
 
 	public function save() {
         $conn = DB::get_instance()->get_connection();
         if ($conn->errno) {echo $conn->error; die();}
+        
+           $stmt = $conn->prepare("INSERT INTO students (name, phone, email) VALUES (?, ?, ?)");
+        $stmt->bind_param('sss', $this->name, $this->phone, $this->email);
+        $stmt->execute();
+        if ($stmt->error){
+            echo $stmt->error;
+        }
+        else{
+            echo "Insert new Student: ". $this->name ." success";
+        }
         }
         
         public function print_all(){
             $conn = DB::get_instance()->get_connection();
         if ($conn->errno) {echo $conn->error; die();}
+        
+         $result = $conn->query("SELECT students.id as id, students.name as name,"
+                 . " students.phone as phone, students.email as email,"
+                 . " students.image as image, courses.name as course "
+                 . "FROM students INNER JOIN courses on students.course_id = courses.id");
+        $rows = array();
+        if ($result->num_rows > 0)
+        {
+            while ($row = $result->fetch_assoc())
+                $rows[] = $row;
+            //echo json_encode($rows);
+        }
+        else
+            echo "0 results";
+        return $rows;
         }
 	public function edit() {
           $conn = DB::get_instance()->get_connection();
@@ -31,8 +56,30 @@ class Student extends Person {
         if ($conn->errno) {echo $conn->error; die();}
         
         
+         $result = $conn->query("DELETE FROM students WHERE id = '$id'");
+        if ($result){
+            echo "delete student success";
         }
-
+        else{
+            echo "delete student failed";
+        }
+        }
+        
+        public function count()
+    {
+        $conn = DB::getInstance()->getConnection();
+        if ($conn->errno) {echo $conn->error; die();}
+        $result = $conn->query("SELECT * FROM students");
+        if ($result->num_rows > 0)
+        {
+            $count = $result->num_rows;
+            echo json_encode($count);
+        }
+        else {
+            echo "0";
+    }
+    }
+}
 //	private static function selectAll() {
 //		echo ucfirst(self::$tableName);
 //		$result = DB::getConnection()->query("SELECT * FROM " . self::$tableName . " limit 1000");
@@ -55,4 +102,3 @@ class Student extends Person {
 //		}
 //		return $html;
 //	}
-}
