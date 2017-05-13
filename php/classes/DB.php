@@ -24,6 +24,10 @@
     
     public function get_connection(){
         return $this->conn;
+<<<<<<< HEAD
     } 
     
+=======
+    }
+>>>>>>> da7111e93af573ed22e2f01ccc03b10d50df62c0
     }
