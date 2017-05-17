@@ -71,3 +71,11 @@ ul{
 li.list-item{
    
 }
+
+label{
+    display:block;
+}
+label input{
+    width:80%;
+    
+}
