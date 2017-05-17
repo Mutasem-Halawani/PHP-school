@@ -36,26 +36,37 @@ class Administrator extends Person{
 		}
         
         }
-        public function print_all(){}
-//        public function print_all(){
-//                 $conn = DB::get_instance()->get_connection();
-//        if ($conn->errno) {echo $conn->error; die();}
-//    }
-//    
-//        $result = $conn->query("SELECT * FROM administrators");
-//        $rows = [];
-//        
-//        while($row = $result->fetch_assoc()){
-//            $rows[] = $row;
-//        }
+        public function print_all(){
+                 $conn = DB::get_instance()->get_connection();
+        if ($conn->errno) {echo $conn->error; die();}
+    
+        $result = $conn->query("SELECT * FROM administrators");
+        $rows = [];
+        
+        while($row = $result->fetch_assoc()){
+            $rows[] = $row;
+            $image_prefix = "../uploads/administrators/";
+             $html = '<ul>';
+                         
+                 $html .= '<a href="">
+                         <li class="list-item">
+                             <img width="50" src="'. $image_prefix . $row["image"] .'" alt="" class="small-icon">
+                             <p class="course-name">' . $row["name"]. '</p>
+                             <p class="course-description">' . $row["email"] .'</p>
+                         </li>
+                     </a>';
+                 $html .='</ul>';
+                 echo $html;
+        }
 //        print_r($rows);
-//        }
+        }
+        
 //	public function edit() {
 //                 $conn = DB::get_instance()->get_connection();
 //        if ($conn->errno) {echo $conn->error; die();}
 //    }
 //        }
-
+        
         public function delete() {
             $conn = DB::connect();
     if ($conn->errno) {

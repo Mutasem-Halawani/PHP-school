@@ -3,6 +3,7 @@
 
 session_start();
 
+include_once 'classes/Administrator.php';
 
 ?>
 <!doctype html>
@@ -20,7 +21,9 @@ session_start();
                  <h3 class="list-header">Admins</h3>
                  <button id="add-course-btn" class="add-btn">+</button>
                  <hr>
-                 <ul>
+                 
+                 <?php $admins = Administrator::print_all(); ?>
+<!--                 <ul>
                      <a href="">
                          <li class="list-item">
                              <img width="50" src="https://userscontent2.emaze.com/images/5d77f24d-41bd-463a-8fdd-a6f9351e5df5/bbaa6e381bd537550e14ef781525cc5e.gif" alt="" class="small-icon">
@@ -56,7 +59,7 @@ session_start();
                              <p class="course-description">this is an obligatory course</p>
                          </li>
                      </a>
-                 </ul>
+                 </ul>-->
              </div>
              <div class="main-container"></div>
          </main>
