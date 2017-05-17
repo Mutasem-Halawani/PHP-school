@@ -1,9 +1,9 @@
 <?php 
 
 interface CRUD {
-	function save();
-        function print_all();
-	function edit();
-	function delete();
+//	public static function save();
+        public static function print_all();
+	public static function edit();
+	public static function delete();
 //	public static function printList();
 }

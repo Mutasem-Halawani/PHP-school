@@ -1,6 +1,6 @@
 <?php
 
-include 'api.php';
+include_once 'api.php';
 
 $username = filter_var($_POST['username'], FILTER_SANITIZE_EMAIL);
 $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);

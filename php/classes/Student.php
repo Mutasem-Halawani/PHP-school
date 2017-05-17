@@ -1,7 +1,7 @@
 <?php
 
-include 'DB.php';
-include 'Person.php';
+include_once  'DB.php';
+include_once 'Person.php';
 
 class Student extends Person {
 	public $image;
@@ -28,7 +28,7 @@ class Student extends Person {
         }
         }
         
-        public function print_all(){
+        public static function print_all(){
             $conn = DB::get_instance()->get_connection();
         if ($conn->errno) {echo $conn->error; die();}
         
@@ -37,12 +37,24 @@ class Student extends Person {
                  . " students.image as image, courses.name as course "
                  . "FROM students INNER JOIN courses on students.course_id = courses.id");
         $rows = array();
+        $image_prefix = "../uploads/students/";
         if ($result->num_rows > 0)
         {
-            while ($row = $result->fetch_assoc())
+            while ($row = $result->fetch_assoc()){
                 $rows[] = $row;
             //echo json_encode($rows);
-        }
+               $html = '<ul>';
+                         
+                 $html .= '<a href="">
+                         <li class="list-item">
+                             <img width="50" src="'. $image_prefix.  $row["image"] .'" alt="" class="small-icon">
+                             <p class="course-name">' . $row["name"]. '</p>
+                             <p class="course-description">' . $row["email"] .'</p>
+                         </li>
+                     </a>';
+                 $html .='</ul>';
+                 echo $html;
+        }}
         else
             echo "0 results";
         return $rows;

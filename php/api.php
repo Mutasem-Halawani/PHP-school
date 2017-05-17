@@ -3,11 +3,11 @@
 session_start();
 
 include_once 'classes/DB.php';
-//include 'login.php';
-//include 'classes/Person.php';
-//include 'classes/Administator.php';
-//include 'classes/Course.php';
-//include 'classes/Student.php';
+include 'login.php';
+include_once 'classes/Person.php';
+include_once 'classes/Administrator.php';
+include_once 'classes/Course.php';
+include_once 'classes/Student.php';
 
 
     function check_login($username,$password){

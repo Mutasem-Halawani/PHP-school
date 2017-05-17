@@ -1,7 +1,7 @@
 <?php
-
-include 'DB.php';
-include 'Person.php';
+//session_start();
+include_once  'DB.php';
+include_once 'Person.php';
 
 class Administrator extends Person{
 //	private static $tableName = 'administrators';

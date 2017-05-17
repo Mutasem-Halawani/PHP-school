@@ -1,7 +1,15 @@
 <?php
 
-
 session_start();
+
+//include 'api.php';
+//
+//include_once 'classes/DB.php';
+include_once 'classes/Person.php';
+include_once 'classes/Administrator.php';
+include_once 'classes/Course.php';
+include_once 'classes/Student.php';
+
 
 ?>
 <!doctype html>
@@ -20,49 +28,61 @@ session_start();
                  <h3 class="list-header">Courses</h3>
                  <button id="add-course-btn" class="add-btn">+</button>
                  <hr>
-                 <ul>
-                     <a href="">
-                         <li class="list-item">
-                             <img width="50" src="https://userscontent2.emaze.com/images/5d77f24d-41bd-463a-8fdd-a6f9351e5df5/bbaa6e381bd537550e14ef781525cc5e.gif" alt="" class="small-icon">
-                             <p class="course-name">math</p>
-                             <p class="course-description">this is an obligatory course</p>
-                         </li>
-                     </a>
-                     <a href="">
-                         <li class="list-item">
-                             <img width="50" src="https://userscontent2.emaze.com/images/5d77f24d-41bd-463a-8fdd-a6f9351e5df5/bbaa6e381bd537550e14ef781525cc5e.gif" alt="" class="small-icon">
-                             <p class="course-name">math</p>
-                             <p class="course-description">this is an obligatory course</p>
-                         </li>
-                     </a>
-                     <a href="">
-                         <li class="list-item">
-                             <img width="50" src="https://userscontent2.emaze.com/images/5d77f24d-41bd-463a-8fdd-a6f9351e5df5/bbaa6e381bd537550e14ef781525cc5e.gif" alt="" class="small-icon">
-                             <p class="course-name">math</p>
-                             <p class="course-description">this is an obligatory course</p>
-                         </li>
-                     </a>
-                     <a href="">
-                         <li class="list-item">
-                             <img width="50" src="https://userscontent2.emaze.com/images/5d77f24d-41bd-463a-8fdd-a6f9351e5df5/bbaa6e381bd537550e14ef781525cc5e.gif" alt="" class="small-icon">
-                             <p class="course-name">math</p>
-                             <p class="course-description">this is an obligatory course</p>
-                         </li>
-                     </a>
-                     <a href="">
-                         <li class="list-item">
-                             <img width="50" src="https://userscontent2.emaze.com/images/5d77f24d-41bd-463a-8fdd-a6f9351e5df5/bbaa6e381bd537550e14ef781525cc5e.gif" alt="" class="small-icon">
-                             <p class="course-name">math</p>
-                             <p class="course-description">this is an obligatory course</p>
-                         </li>
-                     </a>
-                 </ul>
+                 <?php
+                 $courses = Course::print_all();
+//                 $html = '<ul>';
+//                         
+//                 $html .= '<a href="">
+//                         <li class="list-item">
+//                             <img width="50" src="' . '["image"]' .'" alt="" class="small-icon">
+//                             <p class="course-name">' . $rows[0]["name"]. '</p>
+//                             <p class="course-description">this is an obligatory course</p>
+//                         </li>
+//                     </a>
+//                     <a href="">
+//                         <li class="list-item">
+//                             <img width="50" src="https://userscontent2.emaze.com/images/5d77f24d-41bd-463a-8fdd-a6f9351e5df5/bbaa6e381bd537550e14ef781525cc5e.gif" alt="" class="small-icon">
+//                             <p class="course-name">math</p>
+//                             <p class="course-description">this is an obligatory course</p>
+//                         </li>
+//                     </a>
+//                     <a href="">
+//                         <li class="list-item">
+//                             <img width="50" src="https://userscontent2.emaze.com/images/5d77f24d-41bd-463a-8fdd-a6f9351e5df5/bbaa6e381bd537550e14ef781525cc5e.gif" alt="" class="small-icon">
+//                             <p class="course-name">math</p>
+//                             <p class="course-description">this is an obligatory course</p>
+//                         </li>
+//                     </a>
+//                     <a href="">
+//                         <li class="list-item">
+//                             <img width="50" src="https://userscontent2.emaze.com/images/5d77f24d-41bd-463a-8fdd-a6f9351e5df5/bbaa6e381bd537550e14ef781525cc5e.gif" alt="" class="small-icon">
+//                             <p class="course-name">math</p>
+//                             <p class="course-description">this is an obligatory course</p>
+//                         </li>
+//                     </a>
+//                     <a href="">
+//                         <li class="list-item">
+//                             <img width="50" src="https://userscontent2.emaze.com/images/5d77f24d-41bd-463a-8fdd-a6f9351e5df5/bbaa6e381bd537550e14ef781525cc5e.gif" alt="" class="small-icon">
+//                             <p class="course-name">math</p>
+//                             <p class="course-description">this is an obligatory course</p>
+//                         </li>
+//                     </a>
+//                 </ul>';
+//                 
+//                 
+//                 
+//                 echo $html;
+//                 
+//                 ?>
              </div>
              <div class="students-list">
                  <h3 class="list-header">Students</h3>
                  <button id="add-student-btn" class="add-btn">+</button>
                  <hr>
-                 <ul>
+                 <?php  
+                 $students = Student::print_all();
+?>
+<!--                 <ul>
                      <a href="">
                          <li class="list-item">
                              <img width="50" src="https://userscontent2.emaze.com/images/5d77f24d-41bd-463a-8fdd-a6f9351e5df5/bbaa6e381bd537550e14ef781525cc5e.gif" alt="" class="small-icon">
@@ -98,7 +118,7 @@ session_start();
                              <p class="student-email">tom@gmail.com</p>
                          </li>
                      </a>
-                 </ul>
+                 </ul>-->
              </div>
              <div class="main-container"></div>
          </main>

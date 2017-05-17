@@ -1,14 +1,15 @@
 <?php
 
-include 'DB.php';
-include 'Person.php';
+include_once  'DB.php';
+include_once 'Person.php';
 
-class Course implements CRUD{
+class Course {
          
            public $id;
            public $name;
            public $description;
            public $image;
+          
                     
       function __construct($id,$name,$description,$image) {
         $this->id = $id;
@@ -66,23 +67,38 @@ class Course implements CRUD{
         }       
         
         
-        public function print_all() {
+        public static function print_all() {
             
              $conn = DB::get_instance()->get_connection();
         if ($conn->errno) {echo $conn->error; die();}
         
              $result = $conn->query("SELECT * FROM courses");
         $rows = array();
+          $image_prefix = "../uploads/courses/";
         if ($result->num_rows > 0)
         {
-            while ($row = $result->fetch_assoc())
+            while ($row = $result->fetch_assoc()){
                 $rows[] = $row;
-            //echo json_encode($rows);
+//            echo json_encode($rows);
+//            print_r($rows[0]['name']);
+             $html = '<ul>';
+                         
+                 $html .= '<a href="">
+                         <li class="list-item">
+                             <img width="50" src="'. $image_prefix . $row["image"] .'" alt="" class="small-icon">
+                             <p class="course-name">' . $row["name"]. '</p>
+                             <p class="course-description">' . $row["description"] .'</p>
+                         </li>
+                     </a>';
+                 $html .='</ul>';
+                 echo $html;
+                 
+        }
         }
         else {
             echo "0 results";
         return $rows;
     }
-        }
-}
+        
+}}
 

@@ -1,7 +1,7 @@
 <?php
 
-include 'interface.php';
-abstract class Person implements CRUD{
+include_once 'interface.php';
+abstract class Person {
     protected $id;
     protected $name;
     protected $phone;
