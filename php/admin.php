@@ -19,49 +19,32 @@ include_once 'classes/Administrator.php';
          <main>
              <div class="courses-list">
                  <h3 class="list-header">Admins</h3>
-                 <button id="add-course-btn" class="add-btn">+</button>
+                 <!--<button id="add-course-btn" class="add-btn">+</button>-->
+                 <a href="admin.php?add=admin">+</a>
                  <hr>
                  
                  <?php $admins = Administrator::print_all(); ?>
-<!--                 <ul>
-                     <a href="">
-                         <li class="list-item">
-                             <img width="50" src="https://userscontent2.emaze.com/images/5d77f24d-41bd-463a-8fdd-a6f9351e5df5/bbaa6e381bd537550e14ef781525cc5e.gif" alt="" class="small-icon">
-                             <p class="course-name">math</p>
-                             <p class="course-description">this is an obligatory course</p>
-                         </li>
-                     </a>
-                     <a href="">
-                         <li class="list-item">
-                             <img width="50" src="https://userscontent2.emaze.com/images/5d77f24d-41bd-463a-8fdd-a6f9351e5df5/bbaa6e381bd537550e14ef781525cc5e.gif" alt="" class="small-icon">
-                             <p class="course-name">math</p>
-                             <p class="course-description">this is an obligatory course</p>
-                         </li>
-                     </a>
-                     <a href="">
-                         <li class="list-item">
-                             <img width="50" src="https://userscontent2.emaze.com/images/5d77f24d-41bd-463a-8fdd-a6f9351e5df5/bbaa6e381bd537550e14ef781525cc5e.gif" alt="" class="small-icon">
-                             <p class="course-name">math</p>
-                             <p class="course-description">this is an obligatory course</p>
-                         </li>
-                     </a>
-                     <a href="">
-                         <li class="list-item">
-                             <img width="50" src="https://userscontent2.emaze.com/images/5d77f24d-41bd-463a-8fdd-a6f9351e5df5/bbaa6e381bd537550e14ef781525cc5e.gif" alt="" class="small-icon">
-                             <p class="course-name">math</p>
-                             <p class="course-description">this is an obligatory course</p>
-                         </li>
-                     </a>
-                     <a href="">
-                         <li class="list-item">
-                             <img width="50" src="https://userscontent2.emaze.com/images/5d77f24d-41bd-463a-8fdd-a6f9351e5df5/bbaa6e381bd537550e14ef781525cc5e.gif" alt="" class="small-icon">
-                             <p class="course-name">math</p>
-                             <p class="course-description">this is an obligatory course</p>
-                         </li>
-                     </a>
-                 </ul>-->
              </div>
-             <div class="main-container"></div>
+             <div class="main-container"><?php if (isset($_GET['add']) && ($_GET['add']) ==="admin" ){
+              $html ='';
+                      $html.= '<form action="" method="POST">
+                <label for="name">Name<input name="name" type="text"></label>
+                <label for="email">Email<input name="email" type="text"></label>
+                <label for="phone">Phone<input name="phone" type="phone"></label>
+                <label for="">Choose image<input type="text"></label>
+                <label for="password">Password<input name="password" type="password"></label>
+                <label for="role">Role
+                    <select name="role">
+                        <option value="admin">admin</option>
+                        <option value="sales">Sales</option>
+                    </select>
+                </label>
+                 <input type="submit" value="send">
+            </form>';
+                 echo $html;     
+             }
+             
+?></div>
          </main>
           <?php include 'footer.php'; ?> 
     </body>
