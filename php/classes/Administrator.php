@@ -48,12 +48,12 @@ class Administrator extends Person{
             $image_prefix = "../uploads/administrators/";
              $html = '<ul>';
                          
-                 $html .= '<a href="admin.php?action=edit&class_name=admin">
+                 $html .= '<a href="admin.php?action=edit&class_name=admin&id='. $row["id"].
+                         '&name=' . $row["name"]. '&phone='  . $row["phone"].'&email=' . $row["email"]. '"> 
                          <li class="list-item">
                              <img width="50" src="'. $image_prefix . $row["image"] .'" alt="" class="small-icon">
                              <p class="course-name">' . $row["name"]. '</p>
                              <p class="course-description">' . $row["email"] .'</p>
-                                 <p style="display:none;">'. $row["id"].' </p>
                          </li>
                      </a>';
                  $html .='</ul>';
@@ -94,6 +94,13 @@ class Administrator extends Person{
 				echo "0 results";
 			}
 	}
+
+         public static function select_row($id){
+           $conn = DB::get_instance()->get_connection();
+        if ($conn->errno) {echo $conn->error; die();}
+        $result = $conn->query("SELECT FROM administrators WHERE id = $id");
+		return $result;
+    }
 
 	public static function printList() {
 		$rows = self::selectAll();

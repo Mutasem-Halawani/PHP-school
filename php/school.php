@@ -59,19 +59,23 @@ include_once 'classes/Student.php';
                     $html ='';
                       $html.= '    <form action="api.php" method="POST">
                 <label for="name">Name<input name="name" type="text"></label>
-                <label for="email">Email<input name="email" type="text"></label>
                 <label for="phone">Phone<input name="phone" type="tel"></label>
+                <label for="email">Email<input name="email" type="text"></label>
                 <label for="">Choose image<input type="text"></label>
-                <label for="course">Course
-                    <select name="course">
-                        <option value="english">English</option>
-                        <option value="math">Math</option>
-                        <option value="history">History</option>
-                        <option value="biology">Biology</option>
-                    </select>
+                <label for="course">english
+                <input type="radio" name="course" value="English" checked="checked">
                 </label>
-                <input type=hidden name="action" value="add">
-                <input type=hidden name="class_name" value="student">
+                <label for="course">maths
+                <input type="radio" name="course" value="math">
+                </label>
+                <label for="course">history
+                <input type="radio" name="course" value="history">
+                </label>
+                <label for="course">biology
+                <input type="radio" name="course" value="biology">
+                </label>
+                <input type="hidden" name="action" value="add">
+                <input type="hidden" name="class_name" value="student">
                 <input type="submit" value="send">
             </form>';
                  echo $html;    
@@ -81,8 +85,8 @@ include_once 'classes/Student.php';
                else if (isset($_GET['action']) &&(($_GET['action']) === "edit") && ($_GET['class_name']) === "course" ){
               $html ='';
                       $html.= '<form action="api.php" method="POST">
-                <label for="name">Name<input name="name" type="text" value="name" required></label>
-                <label for="name">Description<input name="description" type="text" value="description" required></label>
+                <label for="name">Name<input name="name" type="text" value="'. $_GET['name'] .'" required></label>
+                <label for="name">Description<input name="description" type="text" value="'. $_GET['description'] .'" required></label>
                 <label for="">Choose image<input type="text" ></label>
                 <input type=hidden name="action" value="add">
                 <input type=hidden name="class_name" value="admin">
@@ -94,19 +98,24 @@ include_once 'classes/Student.php';
                 else if (isset($_GET['action']) &&(($_GET['action']) === "edit") && ($_GET['class_name']) === "student" ){
               $html ='';
                       $html.= '<form action="api.php" method="POST">
-                <label for="name">Name<input name="name" type="text" value="name" required></label>
-                <label for="email">Email<input name="email" type="text" value="email" required></label>
-                <label for="phone">Phone<input name="phone" type="phone" value="phone" required></label>
+                <label for="name">Name<input name="name" type="text" value="'. $_GET['name'] .'" required></label>
+                <label for="phone">Phone<input name="phone" type="phone" value="'. $_GET['phone'] .'" required></label>
+                <label for="email">Email<input name="email" type="text" value="'. $_GET['email'] .'" required></label>
                 <label for="">Choose image<input type="text" ></label>
-                <label for="password">Password<input name="password" type="password" required></label>
-                <label for="role" required>Role
-                    <select name="role">
-                        <option value="admin">admin</option>
-                        <option value="sales">Sales</option>
-                    </select>
+                <label for="course">english
+                <input type="radio" name="course" value="English" checked="checked">
                 </label>
-                <input type=hidden name="action" value="add">
-                <input type=hidden name="class_name" value="admin">
+                <label for="course">maths
+                <input type="radio" name="course" value="math">
+                </label>
+                <label for="course">history
+                <input type="radio" name="course" value="history">
+                </label>
+                <label for="course">biology
+                <input type="radio" name="course" value="biology">
+                </label>
+                <input type="hidden" name="action" value="add">
+                <input type="hidden" name="class_name" value="admin">
                  <input type="submit" value="edit">
             </form>';
                  echo $html;     

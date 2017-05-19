@@ -45,12 +45,12 @@ class Student extends Person {
             //echo json_encode($rows);
                $html = '<ul>';
                          
-                 $html .= '<a href="school.php?action=edit&class_name=student">
+                 $html .= '<a href="school.php?action=edit&class_name=student&id='. $row["id"]. 
+                         '&name=' . $row["name"]. '&phone='  . $row["phone"].'&email=' . $row["email"] . '">
                          <li class="list-item">
                              <img width="50" src="'. $image_prefix.  $row["image"] .'" alt="" class="small-icon">
                              <p class="student-name">' . $row["name"]. '</p>
                              <p class="student-phone">' . $row["phone"] .'</p>
-                             <p style="display:none;">'. $row["id"].' </p>
                              <p style="display:none;">'. $row["email"].' </p>
                              <p style="display:none;">'. $row["image"].' </p>
 

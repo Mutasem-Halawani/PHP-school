@@ -3,7 +3,7 @@
 
 session_start();
 
-include_once 'classes/Administrator.php';
+include 'classes/Administrator.php';
 
 
 
@@ -27,7 +27,7 @@ include_once 'classes/Administrator.php';
                  
                  <?php $admins = Administrator::print_all(); ?>
              </div>
-             <div class="main-container"><?php if (isset($_GET['action']) &&(($_GET['action']) === "add") && ($_GET['class_name']) ==="admin" ){
+             <div class="main-container"><?php if (isset($_GET['action']) && (($_GET['action']) === "add") && ($_GET['class_name']) === "admin" ){
               $html ='';
                       $html.= '<form action="api.php" method="POST">
                 <label for="name">Name<input name="name" type="text" required></label>
@@ -50,9 +50,9 @@ include_once 'classes/Administrator.php';
              else if (isset($_GET['action']) &&(($_GET['action']) === "edit") && ($_GET['class_name']) === "admin" ){
               $html ='';
                       $html.= '<form action="api.php" method="POST">
-                <label for="name">Name<input name="name" type="text" value="name" required></label>
-                <label for="email">Email<input name="email" type="text" value="email" required></label>
-                <label for="phone">Phone<input name="phone" type="phone" value="phone" required></label>
+                <label for="name">Name<input name="name" type="text" value="'. $_GET['name'] .'" required></label>
+                <label for="email">Email<input name="email" type="text" value="'. $_GET['email'].'" required></label>
+                <label for="phone">Phone<input name="phone" type="phone" value="'. $_GET['phone'].'"required></label>
                 <label for="role" required>Role
                     <select name="role">
                         <option value="admin">admin</option>
@@ -64,6 +64,8 @@ include_once 'classes/Administrator.php';
                 <input type=hidden name="class_name" value="admin">
                  <input type="submit" value="edit">
             </form>';
+                   
+//                echo $admin;
                  echo $html;     
              }
              
@@ -74,3 +76,4 @@ include_once 'classes/Administrator.php';
           <?php include 'footer.php'; ?> 
     </body>
 </html>
+

@@ -83,12 +83,12 @@ class Course {
 //            print_r($rows[0]['name']);
              $html = '<ul>';
                          
-                 $html .= '<a href="school.php?action=edit&class_name=course">
+                 $html .= '<a href="school.php?action=edit&class_name=course&id='. $row["id"].
+                         '&name=' . $row["name"]. '&description='  . $row["description"].'">
                          <li class="list-item">
                              <img width="50" src="'. $image_prefix . $row["image"] .'" alt="" class="small-icon">
                              <p class="course-name">' . $row["name"]. '</p>
                              <p class="course-description">' . $row["description"] .'</p>
-                                  <p style="display:none;">'. $row["id"].' </p>
                          </li>
                      </a>';
                  $html .='</ul>';
