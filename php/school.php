@@ -42,7 +42,7 @@ include_once 'classes/Student.php';
                  $students = Student::print_all();?>
              </div>
              <div class="main-container">
-                 <?php if (isset($_GET['action']) && ($_GET['class_name']) ==="course" ){
+                 <?php if (isset($_GET['action']) && (($_GET['action']) === "add")&& ($_GET['class_name']) ==="course" ){
               $html ='';
                       $html.= '  <form action="api.php" method="POST">
                 <label for="name">Name<input name="name" type="text"></label>
@@ -55,7 +55,7 @@ include_once 'classes/Student.php';
                  echo $html;     
              }
              
-             else if (isset($_GET['action']) && ($_GET['class_name']) ==="student" ){
+             else if (isset($_GET['action']) && (($_GET['action']) === "add")&&  ($_GET['class_name']) ==="student" ){
                     $html ='';
                       $html.= '    <form action="api.php" method="POST">
                 <label for="name">Name<input name="name" type="text"></label>
@@ -76,7 +76,48 @@ include_once 'classes/Student.php';
             </form>';
                  echo $html;    
                  
-                 
+             }
+             
+               else if (isset($_GET['action']) &&(($_GET['action']) === "edit") && ($_GET['class_name']) === "course" ){
+              $html ='';
+                      $html.= '<form action="api.php" method="POST">
+                <label for="name">Name<input name="name" type="text" value="name" required></label>
+                <label for="email">Email<input name="email" type="text" value="email" required></label>
+                <label for="phone">Phone<input name="phone" type="phone" value="phone" required></label>
+                <label for="">Choose image<input type="text" ></label>
+                <label for="password">Password<input name="password" type="password" required></label>
+                <label for="role" required>Role
+                    <select name="role">
+                        <option value="admin">admin</option>
+                        <option value="sales">Sales</option>
+                    </select>
+                </label>
+                <input type=hidden name="action" value="add">
+                <input type=hidden name="class_name" value="admin">
+                 <input type="submit" value="edit">
+            </form>';
+                 echo $html;     
+             }
+             
+                else if (isset($_GET['action']) &&(($_GET['action']) === "edit") && ($_GET['class_name']) === "student" ){
+              $html ='';
+                      $html.= '<form action="api.php" method="POST">
+                <label for="name">Name<input name="name" type="text" value="name" required></label>
+                <label for="email">Email<input name="email" type="text" value="email" required></label>
+                <label for="phone">Phone<input name="phone" type="phone" value="phone" required></label>
+                <label for="">Choose image<input type="text" ></label>
+                <label for="password">Password<input name="password" type="password" required></label>
+                <label for="role" required>Role
+                    <select name="role">
+                        <option value="admin">admin</option>
+                        <option value="sales">Sales</option>
+                    </select>
+                </label>
+                <input type=hidden name="action" value="add">
+                <input type=hidden name="class_name" value="admin">
+                 <input type="submit" value="edit">
+            </form>';
+                 echo $html;     
              }
              
 ?>

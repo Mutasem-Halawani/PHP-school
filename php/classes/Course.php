@@ -83,7 +83,7 @@ class Course {
 //            print_r($rows[0]['name']);
              $html = '<ul>';
                          
-                 $html .= '<a href="">
+                 $html .= '<a href="school.php?action=edit&class_name=course">
                          <li class="list-item">
                              <img width="50" src="'. $image_prefix . $row["image"] .'" alt="" class="small-icon">
                              <p class="course-name">' . $row["name"]. '</p>

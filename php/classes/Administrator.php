@@ -48,7 +48,7 @@ class Administrator extends Person{
             $image_prefix = "../uploads/administrators/";
              $html = '<ul>';
                          
-                 $html .= '<a href="">
+                 $html .= '<a href="admin.php?action=edit&class_name=admin">
                          <li class="list-item">
                              <img width="50" src="'. $image_prefix . $row["image"] .'" alt="" class="small-icon">
                              <p class="course-name">' . $row["name"]. '</p>
@@ -58,15 +58,9 @@ class Administrator extends Person{
                  $html .='</ul>';
                  echo $html;
         }
-//        print_r($rows);
         }
         
-//	public function edit() {
-//                 $conn = DB::get_instance()->get_connection();
-//        if ($conn->errno) {echo $conn->error; die();}
-//    }
-//        }
-        
+
         public function delete() {
             $conn = DB::connect();
     if ($conn->errno) {
