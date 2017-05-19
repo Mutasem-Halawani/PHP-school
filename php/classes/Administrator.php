@@ -23,10 +23,10 @@ class Administrator extends Person{
            $conn = DB::get_instance()->get_connection();
         if ($conn->errno) {echo $conn->error; die();}
         
-        $stmt = $connection->prepare("INSERT INTO administrators (name, phone,"
+        $stmt = $conn->prepare("INSERT INTO administrators (name, phone,"
                 . " email, image, password, role_id) VALUES (?, ?, ?, ?, ?, ?)");
 		$stmt->bind_param('ssssis', $this->name, $this->phone,
-                        $this->email, $this->image, $this->password,$this->role_id);
+                        $this->email, $this->image, password_hash($this->password, PASSWORD_DEFAULT),$this->role_id);
 		$stmt->execute();
 		
 		if($stmt->error){
@@ -113,7 +113,12 @@ class Administrator extends Person{
 		return $html;
 	}
         
-        public function edit() {}
+        public function edit() {
+            $stmt = DB::getConnection()->prepare("UPDATE  administrators SET name=?, phone=?, email=?, password=?, image=?, role = ? where id = ?");
+        $stmt->bind_param('isssssi',$this->id, $this->name, $this->phone, $this->email, password_hash($this->password, PASSWORD_DEFAULT), $this->image, $this->role );
+
+        $stmt->execute();
+        }
         
         public function count() {
 		$connection = DB::getconn();

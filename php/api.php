@@ -2,54 +2,20 @@
 
 session_start();
 
-include_once 'classes/DB.php';
-include 'login.php';
-include_once 'classes/Person.php';
-include_once 'classes/Administrator.php';
-include_once 'classes/Course.php';
-include_once 'classes/Student.php';
+//include_once 'classes/DB.php';
+//include 'login.php';
+//include_once 'classes/Person.php';
+include 'classes/Administrator.php';
+//include_once 'classes/Course.php';
+//include_once 'classes/Student.php';
 
+$name= filter_var($_POST['name'],FILTER_SANITIZE_STRING);
+$email= filter_var($_POST['email'],FILTER_SANITIZE_STRING);
+$phone= filter_var($_POST['phone'],FILTER_SANITIZE_STRING);
+$password= filter_var($_POST['password'],FILTER_SANITIZE_STRING);
+$role= filter_var($_POST['role'],FILTER_SANITIZE_NUMBER_INT);
 
-    function check_login($username,$password){
-
-   $conn = DB::get_instance()->get_connection();
-        if ($conn->errno) {echo $conn->error; die();}
-
-//        $result = DB::get_instance()->get_connection()->query("SELECT * FROM administrators");
-//        var_dump($result);
-       
-//        $rows = [];
-//		while ($row = $result->fetch_assoc()) {
-//			$rows []= $row;
-//		}
-        
-    $stmt = $conn->prepare("SELECT email, password FROM administrators WHERE email=?");
-    $stmt->bind_param('s',$username);
-
-    $stmt->execute();
-    $stmt->store_result();
-    $stmt->bind_result($email,$returned_password);
-//    $stmt->bind_result($id,$name, $phone, $email, $image, $returned_password, $role_id);
-//    
-//    echo $email . $returned_password;
-    
-    
-   if($stmt->num_rows()) {
-       while ($stmt->fetch())
-       {
-           if (password_verify($password, $returned_password)) {
-               $_SESSION['name'] = $username;
-               $_SESSION['password'] = $password;
-               $session_data = [$username, $password];
-               echo json_encode($session_data);
-               return true;
-           }
-       }
-
-    }
-    else{
-    echo "Wrong Username or Password";
-    return false;
-}
-
-   }
+$Administrator = new Administrator($id, $name, $phone, $email, $image, $password, $role_id);
+$Administrator->save();
+            header("Location: Admin.php");
+         

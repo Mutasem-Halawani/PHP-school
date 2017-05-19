@@ -5,6 +5,8 @@ session_start();
 
 include_once 'classes/Administrator.php';
 
+
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -27,13 +29,13 @@ include_once 'classes/Administrator.php';
              </div>
              <div class="main-container"><?php if (isset($_GET['add']) && ($_GET['add']) ==="admin" ){
               $html ='';
-                      $html.= '<form action="" method="POST">
-                <label for="name">Name<input name="name" type="text"></label>
-                <label for="email">Email<input name="email" type="text"></label>
-                <label for="phone">Phone<input name="phone" type="phone"></label>
-                <label for="">Choose image<input type="text"></label>
-                <label for="password">Password<input name="password" type="password"></label>
-                <label for="role">Role
+                      $html.= '<form action="api.php" method="POST">
+                <label for="name">Name<input name="name" type="text" required></label>
+                <label for="email">Email<input name="email" type="text" required></label>
+                <label for="phone">Phone<input name="phone" type="phone" required></label>
+                <label for="">Choose image<input type="text" ></label>
+                <label for="password">Password<input name="password" type="password" required></label>
+                <label for="role" required>Role
                     <select name="role">
                         <option value="admin">admin</option>
                         <option value="sales">Sales</option>
