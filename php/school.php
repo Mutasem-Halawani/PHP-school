@@ -82,16 +82,8 @@ include_once 'classes/Student.php';
               $html ='';
                       $html.= '<form action="api.php" method="POST">
                 <label for="name">Name<input name="name" type="text" value="name" required></label>
-                <label for="email">Email<input name="email" type="text" value="email" required></label>
-                <label for="phone">Phone<input name="phone" type="phone" value="phone" required></label>
+                <label for="name">Description<input name="description" type="text" value="description" required></label>
                 <label for="">Choose image<input type="text" ></label>
-                <label for="password">Password<input name="password" type="password" required></label>
-                <label for="role" required>Role
-                    <select name="role">
-                        <option value="admin">admin</option>
-                        <option value="sales">Sales</option>
-                    </select>
-                </label>
                 <input type=hidden name="action" value="add">
                 <input type=hidden name="class_name" value="admin">
                  <input type="submit" value="edit">

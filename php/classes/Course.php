@@ -88,6 +88,7 @@ class Course {
                              <img width="50" src="'. $image_prefix . $row["image"] .'" alt="" class="small-icon">
                              <p class="course-name">' . $row["name"]. '</p>
                              <p class="course-description">' . $row["description"] .'</p>
+                                  <p style="display:none;">'. $row["id"].' </p>
                          </li>
                      </a>';
                  $html .='</ul>';

@@ -48,8 +48,12 @@ class Student extends Person {
                  $html .= '<a href="school.php?action=edit&class_name=student">
                          <li class="list-item">
                              <img width="50" src="'. $image_prefix.  $row["image"] .'" alt="" class="small-icon">
-                             <p class="course-name">' . $row["name"]. '</p>
-                             <p class="course-description">' . $row["email"] .'</p>
+                             <p class="student-name">' . $row["name"]. '</p>
+                             <p class="student-phone">' . $row["phone"] .'</p>
+                             <p style="display:none;">'. $row["id"].' </p>
+                             <p style="display:none;">'. $row["email"].' </p>
+                             <p style="display:none;">'. $row["image"].' </p>
+
                          </li>
                      </a>';
                  $html .='</ul>';

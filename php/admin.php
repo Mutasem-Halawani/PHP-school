@@ -33,14 +33,13 @@ include_once 'classes/Administrator.php';
                 <label for="name">Name<input name="name" type="text" required></label>
                 <label for="email">Email<input name="email" type="text" required></label>
                 <label for="phone">Phone<input name="phone" type="phone" required></label>
-                <label for="">Choose image<input type="text" ></label>
-                <label for="password">Password<input name="password" type="password" required></label>
                 <label for="role" required>Role
                     <select name="role">
                         <option value="admin">admin</option>
                         <option value="sales">Sales</option>
                     </select>
                 </label>
+                <label for="">Choose image<input type="text" ></label>
                 <input type=hidden name="action" value="add">
                 <input type=hidden name="class_name" value="admin">
                  <input type="submit" value="add">
@@ -54,14 +53,13 @@ include_once 'classes/Administrator.php';
                 <label for="name">Name<input name="name" type="text" value="name" required></label>
                 <label for="email">Email<input name="email" type="text" value="email" required></label>
                 <label for="phone">Phone<input name="phone" type="phone" value="phone" required></label>
-                <label for="">Choose image<input type="text" ></label>
-                <label for="password">Password<input name="password" type="password" required></label>
                 <label for="role" required>Role
                     <select name="role">
                         <option value="admin">admin</option>
                         <option value="sales">Sales</option>
                     </select>
                 </label>
+                <label for="">Choose image<input type="text" ></label>
                 <input type=hidden name="action" value="add">
                 <input type=hidden name="class_name" value="admin">
                  <input type="submit" value="edit">
