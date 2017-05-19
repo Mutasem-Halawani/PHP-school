@@ -22,12 +22,12 @@ include_once 'classes/Administrator.php';
              <div class="courses-list">
                  <h3 class="list-header">Admins</h3>
                  <!--<button id="add-course-btn" class="add-btn">+</button>-->
-                 <a href="admin.php?add=admin">+</a>
+                 <a href="admin.php?action=add&class_name=admin">+</a>
                  <hr>
                  
                  <?php $admins = Administrator::print_all(); ?>
              </div>
-             <div class="main-container"><?php if (isset($_GET['add']) && ($_GET['add']) ==="admin" ){
+             <div class="main-container"><?php if (isset($_GET['action']) && ($_GET['class_name']) ==="admin" ){
               $html ='';
                       $html.= '<form action="api.php" method="POST">
                 <label for="name">Name<input name="name" type="text" required></label>
@@ -41,6 +41,8 @@ include_once 'classes/Administrator.php';
                         <option value="sales">Sales</option>
                     </select>
                 </label>
+                <input type=hidden name="action" value="add">
+                <input type=hidden name="class_name" value="admin">
                  <input type="submit" value="send">
             </form>';
                  echo $html;     

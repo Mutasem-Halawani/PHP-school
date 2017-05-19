@@ -27,7 +27,7 @@ include_once 'classes/Student.php';
              <div class="courses-list">
                  <h3 class="list-header">Courses</h3>
                  <!--<button id="add-course-btn" class="add-btn">+</button>-->
-                 <a href="school.php?add=course">+</a>
+                 <a href="school.php?action=add&class_name=course">+</a>
                  <hr>
                  <?php
                  $courses = Course::print_all();
@@ -36,26 +36,28 @@ include_once 'classes/Student.php';
              <div class="students-list">
                  <h3 class="list-header">Students</h3>
                  <!--<button id="add-student-btn" class="add-btn">+</button>-->
-                 <a href="school.php?add=student">+</a>
+                 <a href="school.php?action=add&class_name=student">+</a>
                  <hr>
                  <?php  
                  $students = Student::print_all();?>
              </div>
              <div class="main-container">
-                 <?php if (isset($_GET['add']) && ($_GET['add']) ==="course" ){
+                 <?php if (isset($_GET['action']) && ($_GET['class_name']) ==="course" ){
               $html ='';
-                      $html.= '  <form action="" method="GET">
+                      $html.= '  <form action="api.php" method="POST">
                 <label for="name">Name<input name="name" type="text"></label>
                 <label for="description">Description<input name="description" type="text"></label>
                 <label for="">Choose image<input type="text"></label>
+                <input type=hidden name="action" value="add">
+                <input type=hidden name="class_name" value="course">
                  <input type="submit" value="send">
             </form>';
                  echo $html;     
              }
              
-             else if (isset($_GET['add']) && ($_GET['add']) ==="student" ){
+             else if (isset($_GET['action']) && ($_GET['class_name']) ==="student" ){
                     $html ='';
-                      $html.= '    <form action="" method="GET">
+                      $html.= '    <form action="api.php" method="POST">
                 <label for="name">Name<input name="name" type="text"></label>
                 <label for="email">Email<input name="email" type="text"></label>
                 <label for="phone">Phone<input name="phone" type="tel"></label>
@@ -68,6 +70,8 @@ include_once 'classes/Student.php';
                         <option value="biology">Biology</option>
                     </select>
                 </label>
+                <input type=hidden name="action" value="add">
+                <input type=hidden name="class_name" value="student">
                 <input type="submit" value="send">
             </form>';
                  echo $html;    
