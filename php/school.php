@@ -44,7 +44,7 @@ include_once 'classes/Student.php';
              <div class="main-container">
                  <?php if (isset($_GET['action']) && (($_GET['action']) === "add")&& ($_GET['class_name']) ==="course" ){
               $html ='';
-                      $html.= '  <form action="api.php" method="POST">
+                      $html.= '  <form action="api.php" method="POST"  enctype="multipart/form-data">
                 <label for="name">Name<input name="name" type="text"></label>
                 <label for="description">Description<input name="description" type="text"></label>
                 <label for="">Choose image<input type="text"></label>
@@ -57,11 +57,11 @@ include_once 'classes/Student.php';
              
              else if (isset($_GET['action']) && (($_GET['action']) === "add")&&  ($_GET['class_name']) ==="student" ){
                     $html ='';
-                      $html.= '    <form action="api.php" method="POST">
+                      $html.= '    <form action="api.php" method="POST"  enctype="multipart/form-data">
                 <label for="name">Name<input name="name" type="text"></label>
                 <label for="phone">Phone<input name="phone" type="tel"></label>
                 <label for="email">Email<input name="email" type="text"></label>
-                <label for="">Choose image<input type="text"></label>
+                <label for="">Choose image<input type="file"></label>
                 <label for="course">english
                 <input type="radio" name="course" value="English" checked="checked">
                 </label>
@@ -84,7 +84,7 @@ include_once 'classes/Student.php';
              
                else if (isset($_GET['action']) &&(($_GET['action']) === "edit") && ($_GET['class_name']) === "course" ){
               $html ='';
-                      $html.= '<form action="api.php" method="POST">
+                      $html.= '<form action="api.php" method="POST"  enctype="multipart/form-data">
                 <label for="name">Name<input name="name" type="text" value="'. $_GET['name'] .'" required></label>
                 <label for="name">Description<input name="description" type="text" value="'. $_GET['description'] .'" required></label>
                 <label for="">Choose image<input type="text" ></label>
@@ -97,11 +97,11 @@ include_once 'classes/Student.php';
              
                 else if (isset($_GET['action']) &&(($_GET['action']) === "edit") && ($_GET['class_name']) === "student" ){
               $html ='';
-                      $html.= '<form action="api.php" method="POST">
+                      $html.= '<form action="api.php" method="POST"  enctype="multipart/form-data">
                 <label for="name">Name<input name="name" type="text" value="'. $_GET['name'] .'" required></label>
                 <label for="phone">Phone<input name="phone" type="phone" value="'. $_GET['phone'] .'" required></label>
                 <label for="email">Email<input name="email" type="text" value="'. $_GET['email'] .'" required></label>
-                <label for="">Choose image<input type="text" ></label>
+                <label for="">Choose image<input type="file" ></label>
                 <label for="course">english
                 <input type="radio" name="course" value="English" checked="checked">
                 </label>

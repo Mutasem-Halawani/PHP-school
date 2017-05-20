@@ -29,7 +29,7 @@ include 'classes/Administrator.php';
              </div>
              <div class="main-container"><?php if (isset($_GET['action']) && (($_GET['action']) === "add") && ($_GET['class_name']) === "admin" ){
               $html ='';
-                      $html.= '<form action="api.php" method="POST">
+                      $html.= '<form action="api.php" method="POST"  enctype="multipart/form-data">
                 <label for="name">Name<input name="name" type="text" required></label>
                 <label for="email">Email<input name="email" type="text" required></label>
                 <label for="phone">Phone<input name="phone" type="phone" required></label>
@@ -39,7 +39,7 @@ include 'classes/Administrator.php';
                         <option value="sales">Sales</option>
                     </select>
                 </label>
-                <label for="">Choose image<input type="text" ></label>
+                <label for="">Choose image<input type="file" ></label>
                 <input type=hidden name="action" value="add">
                 <input type=hidden name="class_name" value="admin">
                  <input type="submit" value="add">
@@ -49,7 +49,7 @@ include 'classes/Administrator.php';
              //---------------------------------------------------------------------------------------------------------------------------
              else if (isset($_GET['action']) &&(($_GET['action']) === "edit") && ($_GET['class_name']) === "admin" ){
               $html ='';
-                      $html.= '<form action="api.php" method="POST">
+                      $html.= '<form action="api.php" method="POST"  enctype="multipart/form-data">
                 <label for="name">Name<input name="name" type="text" value="'. $_GET['name'] .'" required></label>
                 <label for="email">Email<input name="email" type="text" value="'. $_GET['email'].'" required></label>
                 <label for="phone">Phone<input name="phone" type="phone" value="'. $_GET['phone'].'"required></label>
@@ -59,9 +59,10 @@ include 'classes/Administrator.php';
                         <option value="sales">Sales</option>
                     </select>
                 </label>
-                <label for="">Choose image<input type="text" ></label>
-                <input type=hidden name="action" value="add">
+                <label for="image">Choose image<input name="image" type="file" value=""></label>
+                <input type=hidden name="action" value="edit">
                 <input type=hidden name="class_name" value="admin">
+                <input type=hidden name="id" value="'.$_GET['id']. '">
                  <input type="submit" value="edit">
             </form>';
                    
