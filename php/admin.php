@@ -39,7 +39,7 @@ include 'classes/Administrator.php';
                         <option value="sales">Sales</option>
                     </select>
                 </label>
-                <label for="">Choose image<input type="file" ></label>
+                <label for="image">Choose image<input type="file" name="image" value=""></label>
                 <input type=hidden name="action" value="add">
                 <input type=hidden name="class_name" value="admin">
                  <input type="submit" value="add">

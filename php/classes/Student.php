@@ -66,6 +66,13 @@ class Student extends Person {
 	public function edit() {
           $conn = DB::get_instance()->get_connection();
         if ($conn->errno) {echo $conn->error; die();}
+        
+        
+        
+           $stmt = $conn->prepare("UPDATE STUDENTS SET name=?, phone=?, email=?, image=? where id = ?");
+        $stmt->bind_param('issss',$this->id, $this->name, $this->phone, $this->email, $this->image);
+
+        $stmt->execute();
         }
 	public function delete() {
             $conn = DB::get_instance()->get_connection();

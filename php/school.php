@@ -47,7 +47,7 @@ include_once 'classes/Student.php';
                       $html.= '  <form action="api.php" method="POST"  enctype="multipart/form-data">
                 <label for="name">Name<input name="name" type="text"></label>
                 <label for="description">Description<input name="description" type="text"></label>
-                <label for="">Choose image<input type="text"></label>
+                <label for="">Choose image<input type="file" ></label>
                 <input type=hidden name="action" value="add">
                 <input type=hidden name="class_name" value="course">
                  <input type="submit" value="send">
@@ -87,9 +87,9 @@ include_once 'classes/Student.php';
                       $html.= '<form action="api.php" method="POST"  enctype="multipart/form-data">
                 <label for="name">Name<input name="name" type="text" value="'. $_GET['name'] .'" required></label>
                 <label for="name">Description<input name="description" type="text" value="'. $_GET['description'] .'" required></label>
-                <label for="">Choose image<input type="text" ></label>
-                <input type=hidden name="action" value="add">
-                <input type=hidden name="class_name" value="admin">
+                <label for="">Choose image<input type="file" name="image"></label>
+                <input type=hidden name="action" value="edit">
+                <input type=hidden name="class_name" value="course">
                  <input type="submit" value="edit">
             </form>';
                  echo $html;     
@@ -101,7 +101,7 @@ include_once 'classes/Student.php';
                 <label for="name">Name<input name="name" type="text" value="'. $_GET['name'] .'" required></label>
                 <label for="phone">Phone<input name="phone" type="phone" value="'. $_GET['phone'] .'" required></label>
                 <label for="email">Email<input name="email" type="text" value="'. $_GET['email'] .'" required></label>
-                <label for="">Choose image<input type="file" ></label>
+                <label for="">Choose image<input type="file" name="image" ></label>
                 <label for="course">english
                 <input type="radio" name="course" value="English" checked="checked">
                 </label>
@@ -114,8 +114,8 @@ include_once 'classes/Student.php';
                 <label for="course">biology
                 <input type="radio" name="course" value="biology">
                 </label>
-                <input type="hidden" name="action" value="add">
-                <input type="hidden" name="class_name" value="admin">
+                <input type="hidden" name="action" value="edit">
+                <input type="hidden" name="class_name" value="student">
                  <input type="submit" value="edit">
             </form>';
                  echo $html;     

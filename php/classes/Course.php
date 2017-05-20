@@ -53,6 +53,13 @@ class Course {
 	public function edit() {
             $conn = DB::get_instance()->get_connection();
         if ($conn->errno) {echo $conn->error; die();}
+        
+        
+        
+           $stmt = $conn->prepare("UPDATE  COURSES SET name=?, description=?, image=? where id = ?");
+        $stmt->bind_param('isssssi',$this->id, $this->name, $this->description, $this->image);
+
+        $stmt->execute();
         }
 	public function delete() {
             $conn = DB::get_instance()->get_connection();

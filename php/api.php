@@ -12,13 +12,15 @@ include 'classes/Student.php';
 
 $action = $_POST['action'];
 $class_name = $_POST['class_name'];
-
-
-$target_dir = "../uploads/administrator/administrators";
+$target_dir = "../uploads/$class_name/$class_name-";
+//        echo $class_name;
+//        echo $target_dir;
+//        echo '<br>';
+//        echo  $_FILES["image"]["name"];
 $image = $target_dir . basename($_FILES["image"]["name"]);
 $uploadOk = 1;
 $imageFileType = pathinfo($image,PATHINFO_EXTENSION);
-// Check if image file is a actual image or fake image
+// Check if image file is an actual image or fake image
 if(isset($_POST["submit"])) {
     $check = getimagesize($_FILES["image"]["tmp_name"]);
     if($check !== false) {
@@ -71,7 +73,7 @@ else if($class_name==="student"){
         $name= filter_var($_POST['name'],FILTER_SANITIZE_STRING);
         $phone = filter_var($_POST['phone'], FILTER_SANITIZE_NUMBER_INT);
         $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
-        $image = filter_var($_POST['image'], FILTER_SANITIZE_EMAIL);
+//        $image = filter_var($_POST['image'], FILTER_SANITIZE_EMAIL);
         $course = filter_var($_POST['course'], FILTER_SANITIZE_STRING);
         $student = new Student($id, $name, $phone, $email, $image, $course);
 }
@@ -80,7 +82,7 @@ else if($class_name==="crouse"){
     $id= filter_var($_POST['id'], FILTER_SANITIZE_STRING);
         $name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
         $description = filter_var($_POST['description'], FILTER_SANITIZE_STRING);
-        $image = filter_var($_POST['image'], FILTER_SANITIZE_EMAIL);
+//        $image = filter_var($_POST['image'], FILTER_SANITIZE_EMAIL);
         $course = new Course($id, $name, $description, $image);
 }
 
