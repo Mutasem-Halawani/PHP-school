@@ -87,6 +87,7 @@ include_once 'classes/Student.php';
                       $html.= '<form action="api.php" method="POST"  enctype="multipart/form-data">
                 <label for="name">Name<input name="name" type="text" value="'. $_GET['name'] .'" required></label>
                 <label for="name">Description<input name="description" type="text" value="'. $_GET['description'] .'" required></label>
+                    <img src="'.'../uploads/course/'. $_GET['image'] .'"' .'width="50px"'.'>
                 <label for="">Choose image<input type="file" name="image"></label>
                 <input type=hidden name="action" value="edit">
                 <input type=hidden name="class_name" value="course">
@@ -101,6 +102,7 @@ include_once 'classes/Student.php';
                 <label for="name">Name<input name="name" type="text" value="'. $_GET['name'] .'" required></label>
                 <label for="phone">Phone<input name="phone" type="phone" value="'. $_GET['phone'] .'" required></label>
                 <label for="email">Email<input name="email" type="text" value="'. $_GET['email'] .'" required></label>
+                    <img src="'.'../uploads/student/'. $_GET['image'] .'"' .'width="50px"'.'>
                 <label for="">Choose image<input type="file" name="image" ></label>
                 <label for="course">english
                 <input type="radio" name="course" value="English" checked="checked">

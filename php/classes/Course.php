@@ -91,7 +91,7 @@ class Course {
              $html = '<ul>';
                          
                  $html .= '<a href="school.php?action=edit&class_name=course&id='. $row["id"].
-                         '&name=' . $row["name"]. '&description='  . $row["description"].'">
+                         '&name=' . $row["name"]. '&description='  . $row["description"].  '&image=' .$row["image"].'">
                          <li class="list-item">
                              <img width="50" src="'. $image_prefix . $row["image"] .'" alt="" class="small-icon">
                              <p class="course-name">' . $row["name"]. '</p>

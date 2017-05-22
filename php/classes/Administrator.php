@@ -49,7 +49,7 @@ class Administrator extends Person{
              $html = '<ul>';
                          
                  $html .= '<a href="admin.php?action=edit&class_name=admin&id='. $row["id"].
-                         '&name=' . $row["name"]. '&phone='  . $row["phone"].'&email=' . $row["email"]. '"> 
+                         '&name=' . $row["name"]. '&phone='  . $row["phone"].'&email=' . $row["email"] . '&image=' .$row["image"] .'"> 
                          <li class="list-item">
                              <img width="50" src="'. $image_prefix . $row["image"] .'" alt="" class="small-icon">
                              <p class="course-name">' . $row["name"]. '</p>

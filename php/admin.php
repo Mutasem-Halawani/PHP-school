@@ -59,7 +59,8 @@ include 'classes/Administrator.php';
                         <option value="sales">Sales</option>
                     </select>
                 </label>
-                <label for="image">Choose image<input name="image" type="file" value=""></label>
+                <img src="'.'../uploads/admin/'. $_GET['image'] .'"' .'width="50px"'.'>
+                <label for="image">Choose image<input name="image" type="file" value="'. $_GET['image'].'"></label>
                 <input type=hidden name="action" value="edit">
                 <input type=hidden name="class_name" value="admin">
                 <input type=hidden name="id" value="'.$_GET['id']. '">
