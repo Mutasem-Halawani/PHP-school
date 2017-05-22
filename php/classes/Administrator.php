@@ -45,7 +45,7 @@ class Administrator extends Person{
         
         while($row = $result->fetch_assoc()){
             $rows[] = $row;
-            $image_prefix = "../uploads/administrators/";
+            $image_prefix = "../uploads/admin/";
              $html = '<ul>';
                          
                  $html .= '<a href="admin.php?action=edit&class_name=admin&id='. $row["id"].

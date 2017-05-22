@@ -37,7 +37,7 @@ class Student extends Person {
                  . " students.image as image, courses.name as course "
                  . "FROM students INNER JOIN courses on students.course_id = courses.id");
         $rows = array();
-        $image_prefix = "../uploads/students/";
+        $image_prefix = "../uploads/student/";
         if ($result->num_rows > 0)
         {
             while ($row = $result->fetch_assoc()){
