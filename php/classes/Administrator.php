@@ -30,6 +30,7 @@ class Administrator extends Person{
                 . " email, password, image, role_id) VALUES (?, ?, ?, ?, ?, ?)");
 		$stmt->bind_param('sssssi', $this->name, $this->phone,
                         $this->email, $this->image, $this->password,$this->role_id);
+                
 		$stmt->execute();
 		
 		if($stmt->error){
