@@ -27,7 +27,6 @@ session_start();
             </label>
                 <input type="submit" value="Login">
         </form>
-       
        <?php include 'php/footer.php'; ?>
     </body>
 </html>

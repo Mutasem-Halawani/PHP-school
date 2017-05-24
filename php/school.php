@@ -48,9 +48,9 @@ include_once 'classes/Student.php';
                 <label for="name">Name<input name="name" type="text"></label>
                 <label for="description">Description<input name="description" type="text"></label>
                 <label for="">Image<input type="file" name="image"></label>
-                <input type=hidden name="id" value="'.$_GET['id'] .'">
-                <input type=hidden name="action" value="add">
-                <input type=hidden name="class_name" value="course">
+                <input type="hidden" name="id" value="">
+                <input type="hidden" name="action" value="add">
+                <input type="hidden" name="class_name" value="course">
                  <input type="submit" value="send">
             </form>';
                  echo $html;     
@@ -62,19 +62,20 @@ include_once 'classes/Student.php';
                 <label for="name">Name<input name="name" type="text"></label>
                 <label for="phone">Phone<input name="phone" type="tel"></label>
                 <label for="email">Email<input name="email" type="text"></label>
-                <label for="">Image<input type="file"></label>
+                <label for="">Image<input name="image" type="file" value="image"></label>
                 <label for="course">english
-                <input type="radio" name="course" value="English" checked="checked">
+                <input type="radio" name="course" value="1" checked="checked">
                 </label>
                 <label for="course">maths
-                <input type="radio" name="course" value="math">
+                <input type="radio" name="course" value="2">
                 </label>
                 <label for="course">history
-                <input type="radio" name="course" value="history">
+                <input type="radio" name="course" value="3">
                 </label>
                 <label for="course">biology
-                <input type="radio" name="course" value="biology">
+                <input type="radio" name="course" value="4">
                 </label>
+                <input type="hidden" name="id" value="">
                 <input type="hidden" name="action" value="add">
                 <input type="hidden" name="class_name" value="student">
                 <input type="submit" value="send">
@@ -94,6 +95,7 @@ include_once 'classes/Student.php';
                 <input type=hidden name="action" value="edit">
                 <input type=hidden name="class_name" value="course">
                  <input type="submit" value="edit">
+                    <input type="submit" name="delete" value="delete">
             </form>';
                  echo $html;     
              }
@@ -122,6 +124,7 @@ include_once 'classes/Student.php';
                 <input type="hidden" name="action" value="edit">
                 <input type="hidden" name="class_name" value="student">
                  <input type="submit" value="edit">
+                    <input type="submit" name="delete" value="delete">
             </form>';
                  echo $html;     
              }

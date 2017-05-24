@@ -4,18 +4,21 @@ include_once  'DB.php';
 include_once 'Person.php';
 
 class Administrator extends Person{
-//	private static $tableName = 'administrators';
-//	private static $picturePrefix = 'img/student_img';
-
-    private $image;
-    private $password;  
-    private $role_id;
+    public $id;
+    public $name;
+    public $phone;
+    public $email;
+    public $password;  
+    public $image;
+    public $role_id;
     
-	function __construct($id, $name, $phone ,$email, $image, $password, $role_id) {
-		
-            parent::__construct($id, $name, $phone, $email) ;
-            $this->image = $image;
+	function __construct($id, $name, $phone ,$email, $password, $image,$role_id) {
+            $this->id= $id;
+            $this->name = $name;
+            $this->phone = $phone;
+            $this->phone = $email;
             $this->password = $password;
+            $this->image = $image;
             $this->role_id = $role_id;
             }
 
@@ -24,9 +27,9 @@ class Administrator extends Person{
         if ($conn->errno) {echo $conn->error; die();}
         
         $stmt = $conn->prepare("INSERT INTO administrators (name, phone,"
-                . " email, image, password, role_id) VALUES (?, ?, ?, ?, ?, ?)");
-		$stmt->bind_param('ssssis', $this->name, $this->phone,
-                        $this->email, $this->image, password_hash($this->password, PASSWORD_DEFAULT),$this->role_id);
+                . " email, password, image, role_id) VALUES (?, ?, ?, ?, ?, ?)");
+		$stmt->bind_param('sssssi', $this->name, $this->phone,
+                        $this->email, $this->image, $this->password,$this->role_id);
 		$stmt->execute();
 		
 		if($stmt->error){
@@ -39,7 +42,7 @@ class Administrator extends Person{
         public function print_all(){
                  $conn = DB::get_instance()->get_connection();
         if ($conn->errno) {echo $conn->error; die();}
-    
+   
         $result = $conn->query("SELECT * FROM administrators");
         $rows = [];
         
@@ -49,11 +52,11 @@ class Administrator extends Person{
              $html = '<ul>';
                          
                  $html .= '<a href="admin.php?action=edit&class_name=admin&id='. $row["id"].
-                         '&name=' . $row["name"]. '&phone='  . $row["phone"].'&email=' . $row["email"] . '&image=' .$row["image"] .'"> 
+                         '&name=' . $row["name"]. '&phone=' . $row["phone"].'&email=' . $row["email"] . '&image=' .$row["image"] . '&role_id=' .$row["role_id"] .'"> 
                          <li class="list-item">
                              <img width="50" src="'. $image_prefix . $row["image"] .'" alt="" class="small-icon">
-                             <p class="course-name">' . $row["name"]. '</p>
-                             <p class="course-description">' . $row["email"] .'</p>
+                             <p>' . $row["name"]. '</p>
+                             <p>' . $row["email"] .'</p>
                          </li>
                      </a>';
                  $html .='</ul>';
@@ -63,12 +66,10 @@ class Administrator extends Person{
         
 
         public function delete() {
-            $conn = DB::connect();
-    if ($conn->errno) {
-        echo $conn->error;
-        die();
-    }
-        $result = $connection->query("DELETE FROM admins WHERE id = '$id'");
+       $conn = DB::get_instance()->get_connection();
+        if ($conn->errno) {echo $conn->error; die();}
+        
+        $result = $conn->query("DELETE FROM administrators WHERE id = '$this->id'");
 		if($result) {
 			echo "delete admin success";
 		} else {
@@ -76,7 +77,6 @@ class Administrator extends Person{
 		}
     }
         
-
 	private static function selectAll() {
             
             
@@ -110,6 +110,7 @@ class Administrator extends Person{
 			$html .= "<a href='?page=students&action=edit&id={$rows[$i]->id}'>";
 			$html .= "<img src='" . self::$picturePrefix . "/{$rows[$i]->picture}'>";
 			$html .= "<span>{$rows[$i]->name}</span>";
+			$html .= "<span style>{$rows[$i]->name}</span>";
 			$html .= '</a>';
 		}
 		return $html;
@@ -118,10 +119,9 @@ class Administrator extends Person{
         public function edit() {
                 $conn = DB::get_instance()->get_connection();
         if ($conn->errno) {echo $conn->error; die();}
-            
-            
-            $stmt = $conn->prepare("UPDATE  administrators SET name=?, phone=?, email=?, password=?, image=?, role = ? where id = ?");
-        $stmt->bind_param('isssssi',$this->id, $this->name, $this->phone, $this->email, password_hash($this->password, PASSWORD_DEFAULT), $this->image, $this->role );
+//            print_r($this);
+            $stmt = $conn->prepare("UPDATE  administrators SET name=?, phone=?, email=?,  image=?, role_id = ? where id = ?");
+        $stmt->bind_param('ssssii', $this->name, $this->phone, $this->email,$this->image, $this->role_id,$this->id );
 
         $stmt->execute();
         }

@@ -38,10 +38,9 @@ class Course {
         $conn = DB::get_instance()->get_connection();
         if ($conn->errno) {echo $conn->error; die();}
         
-           $conn = DB::getInstance()->getConnection();
-        if ($conn->errno) {echo $conn->error; die();}
-        $stmt = $conn->prepare("INSERT INTO courses (name, description) VALUES (?, ?)");
-        $stmt->bind_param('ss', $this->name, $this->description);
+      
+        $stmt = $conn->prepare("INSERT INTO courses (name, description ,image) VALUES (?, ?,?)");
+        $stmt->bind_param('sss', $this->name, $this->description , $this->image);
         $stmt->execute();
         if ($stmt->error){
             echo $stmt->error;
@@ -65,7 +64,7 @@ class Course {
             $conn = DB::get_instance()->get_connection();
         if ($conn->errno) {echo $conn->error; die();}
         
-         $result = $conn->query("DELETE FROM courses WHERE id = '$id'");
+         $result = $conn->query("DELETE FROM courses WHERE id = '$this->id'");
         if ($result){
             echo "delete course success";
         }else{

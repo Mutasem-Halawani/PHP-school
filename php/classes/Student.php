@@ -4,11 +4,18 @@ include_once  'DB.php';
 include_once 'Person.php';
 
 class Student extends Person {
+        public $id;
+        public $name;
+        public $phone;
+        public $email;
 	public $image;
         public $course_id;
 
 	function __construct($id, $name, $phone, $email, $image,$course_id) {
-            parent::__construct($id, $name, $phone, $email);
+                 $this->id = $id;
+                 $this->name = $name;
+                 $this->phone = $phone;
+                 $this->email = $email;
 		$this->image = $image;
 		$this->course_id = $course_id;
 	}
@@ -53,7 +60,6 @@ class Student extends Person {
                              <p class="student-phone">' . $row["phone"] .'</p>
                              <p style="display:none;">'. $row["email"].' </p>
                              <p style="display:none;">'. $row["image"].' </p>
-
                          </li>
                      </a>';
                  $html .='</ul>';
@@ -67,10 +73,8 @@ class Student extends Person {
           $conn = DB::get_instance()->get_connection();
         if ($conn->errno) {echo $conn->error; die();}
         
-        
-        
-           $stmt = $conn->prepare("UPDATE STUDENTS SET name=?, phone=?, email=?, image=? where id = ?");
-        $stmt->bind_param('issss',$this->id, $this->name, $this->phone, $this->email, $this->image);
+           $stmt = $conn->prepare("UPDATE STUDENTS SET name=?, phone=?, email=?, image=? , course_id=? where id = ?");
+        $stmt->bind_param('ssssii', $this->name, $this->phone, $this->email, $this->image, $this->course_id ,$this->id);
 
         $stmt->execute();
         }
