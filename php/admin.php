@@ -60,11 +60,13 @@ include 'classes/Administrator.php';
                     </select>
                 </label>
                 <img src="'.'../uploads/admin/'. $_GET['image'] .'"' .'width="50px"'.'>
-                <label for="image">Choose image<input name="image" type="file" value="'. $_GET['image'].'"></label>
+                <label for="image"><input name="image" type="file" value="'. $_GET['image'].'"></label>
                 <input type=hidden name="action" value="edit">
                 <input type=hidden name="class_name" value="admin">
                 <input type=hidden name="id" value="'.$_GET['id']. '">
-                 <input type="submit" value="edit">
+                 <input type="submit" name="edit" value="edit">
+                 <input type="submit" name="delete" value="delete">
+                 
             </form>';
                    
 //                echo $admin;

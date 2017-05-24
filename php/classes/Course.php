@@ -51,16 +51,16 @@ class Course {
         }
     }
 	public function edit() {
+//            echo 'hi';
             $conn = DB::get_instance()->get_connection();
         if ($conn->errno) {echo $conn->error; die();}
-        
-        
-        
-           $stmt = $conn->prepare("UPDATE  COURSES SET name=?, description=?, image=? where id = ?");
-        $stmt->bind_param('isssssi',$this->id, $this->name, $this->description, $this->image);
-
+        print_r($this);
+        $stmt = $conn->prepare("UPDATE COURSES SET name=?, description=?, image=? where id = ?");
+        $stmt->bind_param('sssi', $this->name, $this->description, $this->image, $this->id);
         $stmt->execute();
+        echo 'work';
         }
+        
 	public function delete() {
             $conn = DB::get_instance()->get_connection();
         if ($conn->errno) {echo $conn->error; die();}
