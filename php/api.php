@@ -88,6 +88,7 @@ else if($class_name==="student"){
         $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
        $course_id = filter_var($_POST['course'], FILTER_SANITIZE_STRING);
         $new_obj = new Student($id, $name, $phone, $email, $image, $course_id);
+//        echo $image;
 }
 
 else if($class_name==="course"){
@@ -97,7 +98,7 @@ else if($class_name==="course"){
         $new_obj = new Course($id, $name, $description, $image);
 //        echo '<br>'. $id . '<br>'. $name . '<br>'. $description .'<br>'. $image;
 //        print_r($new_obj);
-        echo $image;
+//        echo $image;
         
 }
 

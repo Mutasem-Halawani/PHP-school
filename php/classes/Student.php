@@ -24,8 +24,8 @@ class Student extends Person {
         $conn = DB::get_instance()->get_connection();
         if ($conn->errno) {echo $conn->error; die();}
         
-           $stmt = $conn->prepare("INSERT INTO students (name, phone, email) VALUES (?, ?, ?)");
-        $stmt->bind_param('sss', $this->name, $this->phone, $this->email);
+           $stmt = $conn->prepare("INSERT INTO students (name, phone, email, image) VALUES (?, ?, ?,?)");
+        $stmt->bind_param('ssss', $this->name, $this->phone, $this->email , $this->image);
         $stmt->execute();
         if ($stmt->error){
             echo $stmt->error;
@@ -56,6 +56,7 @@ class Student extends Person {
                 $rows[] = $row;
 //                print_r($rows);
                $html = '<ul>';
+//               print_r($row['image']);
                  $html .= '<a href="school.php?action=edit&class_name=student&id='. $row["id"]. 
                          '&name=' . $row["name"]. '&phone='  . $row["phone"].'&email=' . $row["email"] .  '&image=' .$row["image"].'">
                          <li class="list-item">
@@ -87,7 +88,7 @@ class Student extends Person {
         if ($conn->errno) {echo $conn->error; die();}
         
         
-         $result = $conn->query("DELETE FROM students WHERE id = '$this->id'");
+         $result = $conn->query("DELETE FROM students WHERE id = $this->id");
         if ($result){
             echo "delete student success";
         }
