@@ -43,6 +43,8 @@ $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
     header("Location: main.php");
 }
 else{ // uname or pwd error
-    $message ="wrong";
-    header("Location: ../index.php");
+    echo "<script language=\"JavaScript\">\n";
+    echo "alert('Please make sure your type the correct username & password!');";
+    echo "window.location='../index.php'";
+    echo "</script>";
 }

@@ -21,6 +21,7 @@ $poster_name = $target_dir . $image;
 $uploadOk = 1;
 $imageFileType = pathinfo($poster_name,PATHINFO_EXTENSION);
 // Check if image file is an actual image or fake image
+
 if(isset($_POST["submit"])) {
     $check = getimagesize($_FILES["image"]["tmp_name"]);
     if($check !== false) {
@@ -35,7 +36,6 @@ if(isset($_POST["submit"])) {
 if(isset($_POST["delete"])){
     $action = "delete"; 
  }
- 
 
 if ($uploadOk == 0) {
     echo "Sorry, your file was not uploaded.";
@@ -48,7 +48,6 @@ if ($uploadOk == 0) {
     }
 }
 
-print_r($_POST);
 if ($class_name==="admin"){
     
     $id= filter_var($_POST['id'], FILTER_SANITIZE_STRING);
@@ -77,7 +76,6 @@ else if($class_name==="course"){
         $new_obj = new Course($id, $name, $description, $image);
         
 }
-
 
   switch ($action) {
       case 'edit':

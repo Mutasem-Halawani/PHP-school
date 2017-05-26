@@ -21,7 +21,6 @@ include 'classes/Administrator.php';
          <main>
              <div class="courses-list">
                  <h3 class="list-header">Admins</h3>
-                 <!--<button id="add-course-btn" class="add-btn">+</button>-->
                  <a href="admin.php?action=add&class_name=admin">+</a>
                  <hr>
                  
