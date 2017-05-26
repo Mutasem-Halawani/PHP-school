@@ -1,8 +1,7 @@
 <?php
 
-session_start();
+  session_start();
 
-include_once 'classes/Person.php';
 include_once 'classes/Administrator.php';
 include_once 'classes/Course.php';
 include_once 'classes/Student.php';

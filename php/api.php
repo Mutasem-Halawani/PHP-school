@@ -1,7 +1,5 @@
 <?php
 
-session_start();
-
 include 'classes/DB.php';
 include 'classes/Person.php';
 include 'classes/Administrator.php';

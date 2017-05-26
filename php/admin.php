@@ -2,8 +2,7 @@
 
 session_start();
 
-include 'classes/Administrator.php';
-
+include_once 'classes/Administrator.php';
 ?>
 <!doctype html>
 <html lang="en">

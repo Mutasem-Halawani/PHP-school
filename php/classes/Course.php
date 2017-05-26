@@ -1,5 +1,6 @@
 <?php
 
+
 include_once  'DB.php';
 include_once 'Person.php';
 
@@ -85,8 +86,6 @@ class Course {
         {
             while ($row = $result->fetch_assoc()){
                 $rows[] = $row;
-//            echo json_encode($rows);
-//            print_r($rows[0]['name']);
              $html = '<ul>';
                          
                  $html .= '<a href="school.php?action=edit&class_name=course&id='. $row["id"].
@@ -107,5 +106,46 @@ class Course {
         return $rows;
     }
         
+}
+
+        public static function show() {
+            
+             $conn = DB::get_instance()->get_connection();
+        if ($conn->errno) {echo $conn->error; die();}
+        
+             $result = $conn->query("SELECT * FROM courses");
+        $rows = array();
+          $image_prefix = "../uploads/course/";
+        if ($result->num_rows > 0)
+        {
+            while ($row = $result->fetch_assoc()){
+                $rows[] = $row;
+//             $html = '<ul>';
+//                         
+//                 $html .= '<a href="school.php?action=edit&class_name=course&id='. $row["id"].
+//                         '&name=' . $row["name"]. '&description='  . $row["description"].  '&image=' .$row["image"].'">
+//                         <li class="list-item">
+//                             <img width="50" src="'. $image_prefix . $row["image"] .'" alt="" class="small-icon">
+//                             <p class="course-name">' . $row["name"]. '</p>
+//                             <p class="course-description">' . $row["description"] .'</p>
+//                         </li>
+//                     </a>';
+//                 $html .='</ul>';
+//                 echo $html;
+                 
+                 
+            $html ='';
+                $html.= ' <label for="course_id">'. $row["name"].'
+                <input type="radio" name="course_id" value="'. $row["id"].'" checked="checked">';
+                 echo $html; 
+                 
+        }
+        }
+        else {
+            echo "0 results";
+        return $rows;
+    }
+        
 }}
+
 

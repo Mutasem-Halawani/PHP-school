@@ -10,4 +10,5 @@
                 <input type="hidden" name="class_name" value="course">
                  <input type="submit" value="send">
             </form>';
-                 echo $html; 
+             
+               echo $html; 
