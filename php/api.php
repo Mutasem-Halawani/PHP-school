@@ -65,16 +65,15 @@ if ($uploadOk == 0) {
     }
 }
 
- 
+print_r($_POST);
 if ($class_name==="admin"){
     
     $id= filter_var($_POST['id'], FILTER_SANITIZE_STRING);
         $name= filter_var($_POST['name'],FILTER_SANITIZE_STRING);
-        $phone= filter_var($_POST['phone'],FILTER_SANITIZE_STRING);
+        $phone= filter_var($_POST['phone'],FILTER_SANITIZE_NUMBER_INT);
         $email= filter_var($_POST['email'],FILTER_SANITIZE_EMAIL);
         $password= filter_var($_POST['password'],FILTER_SANITIZE_STRING);
         $role_id= filter_var($_POST['role_id'],FILTER_SANITIZE_NUMBER_INT);
-//        $role_id= filter_var("1",FILTER_SANITIZE_NUMBER_INT);
         $new_obj = new Administrator($id, $name, $phone, $email, $password,$image, $role_id);
          print_r($new_obj);
 //        echo $email;
@@ -86,7 +85,7 @@ else if($class_name==="student"){
         $name= filter_var($_POST['name'],FILTER_SANITIZE_STRING);
         $phone = filter_var($_POST['phone'], FILTER_SANITIZE_NUMBER_INT);
         $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
-       $course_id = filter_var($_POST['course'], FILTER_SANITIZE_STRING);
+       $course_id = filter_var($_POST['course_id'], FILTER_SANITIZE_STRING);
         $new_obj = new Student($id, $name, $phone, $email, $image, $course_id);
 //        echo $image;
 }

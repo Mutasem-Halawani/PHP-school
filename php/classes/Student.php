@@ -58,7 +58,7 @@ class Student extends Person {
                $html = '<ul>';
 //               print_r($row['image']);
                  $html .= '<a href="school.php?action=edit&class_name=student&id='. $row["id"]. 
-                         '&name=' . $row["name"]. '&phone='  . $row["phone"].'&email=' . $row["email"] .  '&image=' .$row["image"].'">
+                         '&name=' . $row["name"]. '&phone='  . $row["phone"].'&email=' . $row["email"] .  '&image=' .$row["image"]. '&course_id=' .$row["course_id"].'">
                          <li class="list-item">
                              <img width="50" src="'. $image_prefix.  $row["image"] .'" alt="" class="small-icon">
                              <p class="student-name">' . $row["name"]. '</p>

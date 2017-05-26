@@ -8,17 +8,17 @@ class Administrator extends Person{
     public $name;
     public $phone;
     public $email;
-    public $password;  
     public $image;
+    public $password;  
     public $role_id;
     
-	function __construct($id, $name, $phone ,$email, $password, $image,$role_id) {
+	function __construct($id, $name, $phone ,$email,$image, $password,$role_id) {
             $this->id= $id;
             $this->name = $name;
             $this->phone = $phone;
-            $this->phone = $email;
-            $this->password = $password;
+            $this->email = $email;
             $this->image = $image;
+            $this->password = $password;
             $this->role_id = $role_id;
             }
 
@@ -26,10 +26,8 @@ class Administrator extends Person{
            $conn = DB::get_instance()->get_connection();
         if ($conn->errno) {echo $conn->error; die();}
         
-        $stmt = $conn->prepare("INSERT INTO administrators (name, phone,"
-                . " email, password, image, role_id) VALUES (?, ?, ?, ?, ?, ?)");
-		$stmt->bind_param('sssssi', $this->name, $this->phone,
-                        $this->email, $this->image, $this->password,$this->role_id);
+        $stmt = $conn->prepare("INSERT INTO administrators (name, phone,email,image, password, role_id) VALUES (?, ?, ?, ?, ?, ?)");
+		$stmt->bind_param('sssssi', $this->name, $this->phone,$this->email, $this->image, $this->password,$this->role_id);
                 
 		$stmt->execute();
 		
@@ -122,7 +120,7 @@ class Administrator extends Person{
         if ($conn->errno) {echo $conn->error; die();}
 //            print_r($this);
             $stmt = $conn->prepare("UPDATE  administrators SET name=?, phone=?, email=?,  image=?, role_id = ? where id = ?");
-        $stmt->bind_param('ssssii', $this->name, $this->phone, $this->email,$this->image, $this->role_id,$this->id );
+        $stmt->bind_param('ssssii', $this->name, $this->phone, $this->email,$this->image, $this->role_id,$this->id);
 
         $stmt->execute();
         }

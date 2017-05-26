@@ -64,16 +64,16 @@ include_once 'classes/Student.php';
                 <label for="email">Email<input name="email" type="text"></label>
                 <label for="">Image<input name="image" type="file" value="image"></label>
                 <label for="course">english
-                <input type="radio" name="course" value="1" checked="checked">
+                <input type="radio" name="course_id" value="1" checked="checked">
                 </label>
                 <label for="course">maths
-                <input type="radio" name="course" value="2">
+                <input type="radio" name="course_id" value="2">
                 </label>
                 <label for="course">history
-                <input type="radio" name="course" value="3">
+                <input type="radio" name="course_id" value="3">
                 </label>
                 <label for="course">biology
-                <input type="radio" name="course" value="4">
+                <input type="radio" name="course_id" value="4">
                 </label>
                 <input type="hidden" name="id" value="">
                 <input type="hidden" name="action" value="add">
