@@ -78,14 +78,32 @@ else if($class_name==="course"){
   switch ($action) {
       case 'edit':
      $new_obj->edit();
+           if ($class_name==="admin"){
+               header("Location:admin.php");
+           }
+           else{
+               header("Location:school.php");
+           }
        break;
       
        case 'add':
            $new_obj->save();
+           if ($class_name==="admin"){
+               header("Location:admin.php");
+           }
+           else{
+               header("Location:school.php");
+           }
            break;
        
        case 'delete':
            $new_obj->delete();
+            if ($class_name==="admin"){
+               header("Location:admin.php");
+           }
+           else{
+               header("Location:school.php");
+           }
           break;
 
         default:

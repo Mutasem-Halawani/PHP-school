@@ -1,6 +1,10 @@
 <?php
 
 session_start();
+//    if(isset($_SESSION["user_id"]) & ($_SESSION["user_id"]==1)){
+//    header("location: ../index.php");
+//    }
+    
 include_once 'classes/DB.php';
   function check_login($username,$password){
 
@@ -40,7 +44,7 @@ $username = filter_var($_POST['username'], FILTER_SANITIZE_EMAIL);
 $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
 
    if (check_login($username, $password)){
-//       $_SESSION['logged_in'] = 1;
+       $_SESSION["user_id"] =1;
     header("Location: main.php");
 }
 else{ // uname or pwd error
