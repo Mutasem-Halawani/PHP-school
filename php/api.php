@@ -1,5 +1,8 @@
 <?php
 
+session_start();
+if(!$_SESSION['name']) {header("Location: ../index.php");}
+
 include 'classes/DB.php';
 include 'classes/Person.php';
 include 'classes/Administrator.php';

@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+if(!$_SESSION['name']) {header("Location: ../index.php");}
 
 include_once 'classes/Administrator.php';
 ?>

@@ -1,9 +1,7 @@
 <?php
 
-   session_start();
-//    if(isset($_SESSION["user_id"]) & ($_SESSION["user_id"]==1)){
-//    header("location: ../index.php");
-//    }
+session_start();
+if(!$_SESSION['name']) {header("Location: ../index.php");}
 ?>
 
 <!doctype html>
