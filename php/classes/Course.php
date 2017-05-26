@@ -10,16 +10,13 @@ class Course {
            public $name;
            public $description;
            public $image;
-          
                     
       function __construct($id,$name,$description,$image) {
         $this->id = $id;
         $this->name = $name;
         $this->description = $description;
         $this->image = $image;
-        
 }
-
 
     public function count() {
         $conn = DB::getInstance()->getConnection();
@@ -120,25 +117,10 @@ class Course {
         {
             while ($row = $result->fetch_assoc()){
                 $rows[] = $row;
-//             $html = '<ul>';
-//                         
-//                 $html .= '<a href="school.php?action=edit&class_name=course&id='. $row["id"].
-//                         '&name=' . $row["name"]. '&description='  . $row["description"].  '&image=' .$row["image"].'">
-//                         <li class="list-item">
-//                             <img width="50" src="'. $image_prefix . $row["image"] .'" alt="" class="small-icon">
-//                             <p class="course-name">' . $row["name"]. '</p>
-//                             <p class="course-description">' . $row["description"] .'</p>
-//                         </li>
-//                     </a>';
-//                 $html .='</ul>';
-//                 echo $html;
-                 
-                 
             $html ='';
                 $html.= ' <label for="course_id">'. $row["name"].'
                 <input type="radio" name="course_id" value="'. $row["id"].'" checked="checked">';
                  echo $html; 
-                 
         }
         }
         else {

@@ -9,7 +9,6 @@ include_once 'classes/Course.php';
                 <label for="email">Email<input name="email" type="text" value="'. $_GET['email'] .'" required></label>
                     <img src="'.'../uploads/student/'. $_GET['image'] .'"' .'width="50px"'.'>
                 <label for=""><input type="file" name="image" ></label>';
-           
                  $html.= '<input type="hidden" name="id" value="'. $_GET['id'] .'">
                 <input type="hidden" name="action" value="edit">
                 <input type="hidden" name="class_name" value="student">

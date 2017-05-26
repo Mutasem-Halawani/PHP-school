@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 13, 2017 at 10:47 AM
+-- Generation Time: May 26, 2017 at 06:55 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.1.1
 
@@ -28,20 +28,21 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `administrators` (
   `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  `phone` varchar(25) DEFAULT NULL,
-  `email` varchar(120) DEFAULT NULL,
-  `image` varchar(255) DEFAULT NULL,
-  `password` varchar(120) DEFAULT NULL,
-  `role_id` int(11) DEFAULT NULL
+  `name` varchar(30) NOT NULL,
+  `phone` char(10) NOT NULL,
+  `email` varchar(60) NOT NULL,
+  `image` varchar(60) NOT NULL,
+  `PASSWORD` varchar(255) NOT NULL,
+  `role_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `administrators`
 --
 
-INSERT INTO `administrators` (`id`, `name`, `phone`, `email`, `image`, `password`, `role_id`) VALUES
-(1, 'mutasem', '054000000', 'mutasem@gmail.com', NULL, '$2y$10$3VAt1MyAu8wWZRMqclfcSuwWgYcEG18xFzmefhS2lASoQZwzcI1X.', 1);
+INSERT INTO `administrators` (`id`, `name`, `phone`, `email`, `image`, `PASSWORD`, `role_id`) VALUES
+(1, 'mutasem', '000', 'mutasem@gmail.com', 'test.jpg', '$2y$10$SmJQBOM5rH0B0srNSPyrk.1USfwizTWOKDzGU1yNK.SMFbnVKXwzC', 1),
+(7, 'avi', '054546546', 'avi@gmail.com', 'test.jpg', '$2y$10$Qvfgu6Weav8YVWG9njANue6XCmTTtDj1azupQg3dowqikG1fFbozK', 2);
 
 -- --------------------------------------------------------
 
@@ -61,30 +62,8 @@ CREATE TABLE `courses` (
 --
 
 INSERT INTO `courses` (`id`, `name`, `description`, `image`) VALUES
-(1, 'math', NULL, NULL),
-(2, 'english', NULL, NULL),
-(3, 'history', NULL, NULL),
-(4, 'biology', NULL, NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `roles`
---
-
-CREATE TABLE `roles` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(25) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `roles`
---
-
-INSERT INTO `roles` (`id`, `name`) VALUES
-(1, 'owner'),
-(2, 'manager'),
-(3, 'sales');
+(4, 'biology', 'Animal biology', 'Jerusalem-Old-City-Skyline-Green-olive-tours-cropped_large.gif'),
+(10, 'new', 'new', 'course-math.jpg');
 
 -- --------------------------------------------------------
 
@@ -106,7 +85,7 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`id`, `name`, `phone`, `email`, `image`, `course_id`) VALUES
-(1, 'moti', 5412312, 'moti@gmail.com', 'moti.jpg', 1);
+(22, 'mutasem', 545, 'mutasem@gmail.com', 'english.jpg', NULL);
 
 --
 -- Indexes for dumped tables
@@ -116,21 +95,13 @@ INSERT INTO `students` (`id`, `name`, `phone`, `email`, `image`, `course_id`) VA
 -- Indexes for table `administrators`
 --
 ALTER TABLE `administrators`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `role_id` (`role_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `courses`
 --
 ALTER TABLE `courses`
   ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `roles`
---
-ALTER TABLE `roles`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `role_id_idx` (`id`);
 
 --
 -- Indexes for table `students`
@@ -147,33 +118,17 @@ ALTER TABLE `students`
 -- AUTO_INCREMENT for table `administrators`
 --
 ALTER TABLE `administrators`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `courses`
 --
 ALTER TABLE `courses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
---
--- AUTO_INCREMENT for table `roles`
---
-ALTER TABLE `roles`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `administrators`
---
-ALTER TABLE `administrators`
-  ADD CONSTRAINT `administrators_ibfk_1` FOREIGN KEY (`id`) REFERENCES `roles` (`id`),
-  ADD CONSTRAINT `administrators_ibfk_2` FOREIGN KEY (`id`) REFERENCES `roles` (`id`);
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
