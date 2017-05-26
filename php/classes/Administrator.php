@@ -26,8 +26,8 @@ class Administrator extends Person{
            $conn = DB::get_instance()->get_connection();
         if ($conn->errno) {echo $conn->error; die();}
         
-        $stmt = $conn->prepare("INSERT INTO administrators (name, phone,email,image, password, role_id) VALUES (?, ?, ?, ?, ?, ?)");
-		$stmt->bind_param('sssssi', $this->name, $this->phone,$this->email, $this->image, $this->password,$this->role_id);
+        $stmt = $conn->prepare("INSERT INTO administrators (name, phone,email,image, PASSWORD, role_id) VALUES (?, ?, ?, ?, ?, ?)");
+		$stmt->bind_param('sssssi', $this->name, $this->phone,$this->email, $this->image,$this->password, $this->role_id);
                 
 		$stmt->execute();
 		

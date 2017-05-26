@@ -72,9 +72,9 @@ if ($class_name==="admin"){
         $name= filter_var($_POST['name'],FILTER_SANITIZE_STRING);
         $phone= filter_var($_POST['phone'],FILTER_SANITIZE_NUMBER_INT);
         $email= filter_var($_POST['email'],FILTER_SANITIZE_EMAIL);
-        $password= filter_var($_POST['password'],FILTER_SANITIZE_STRING);
+        $password= password_hash(filter_var($_POST['password'],FILTER_SANITIZE_STRING), PASSWORD_DEFAULT);
         $role_id= filter_var($_POST['role_id'],FILTER_SANITIZE_NUMBER_INT);
-        $new_obj = new Administrator($id, $name, $phone, $email, $password,$image, $role_id);
+        $new_obj = new Administrator($id, $name, $phone, $email,$image, $password, $role_id);
          print_r($new_obj);
 //        echo $email;
         

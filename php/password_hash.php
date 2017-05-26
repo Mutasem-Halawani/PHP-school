@@ -1,6 +1,6 @@
 <?php
 
-$password = 'mutasem';
+$password = 'avi';
 echo password_hash($password, PASSWORD_DEFAULT);
-$hash = '$2y$10$SmJQBOM5rH0B0srNSPyrk.1USfwizTWOKDzGU1yNK.SMFbnVKXwzC';
+$hash = '$2y$10$Qvfgu6Weav8YVWG9njANue6XCmTTtDj1azupQg3dowqikG1fFbozK';
 echo password_verify($password, $hash) ? ' verified': ' dont know you';
