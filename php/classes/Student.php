@@ -12,10 +12,7 @@ class Student extends Person {
         public $course_id;
 
 	function __construct($id, $name, $phone, $email, $image,$course_id) {
-                 $this->id = $id;
-                 $this->name = $name;
-                 $this->phone = $phone;
-                 $this->email = $email;
+                 parent::__construct($id, $name, $phone, $email);
 		$this->image = $image;
 		$this->course_id = $course_id;
 	}

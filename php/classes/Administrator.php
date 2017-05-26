@@ -13,10 +13,7 @@ class Administrator extends Person{
     public $role_id;
     
 	function __construct($id, $name, $phone ,$email,$image, $password,$role_id) {
-            $this->id= $id;
-            $this->name = $name;
-            $this->phone = $phone;
-            $this->email = $email;
+            parent::__construct($id, $name, $phone, $email);
             $this->image = $image;
             $this->password = $password;
             $this->role_id = $role_id;
@@ -38,7 +35,7 @@ class Administrator extends Person{
 		}
         
         }
-        public function print_all(){
+        public static function print_all(){
                  $conn = DB::get_instance()->get_connection();
         if ($conn->errno) {echo $conn->error; die();}
    
